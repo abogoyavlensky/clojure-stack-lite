@@ -2,4 +2,4 @@
  {:enter (println "Running task:" (:name (current-task)))
 
   create {:doc "Create a new project"
-          :task (clojure "-X:local-new :name tmpl")}}}
+          :task (clojure "-X:local-new :name tmpl :overwrite :delete")}}}
