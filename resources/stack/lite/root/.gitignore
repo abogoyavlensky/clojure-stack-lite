@@ -20,4 +20,5 @@ lsp/
 .env
 .env.local
 *.sqlite*
-tmpl*
+resources/public/css/output.*
+.testcontainers.properties

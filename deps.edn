@@ -1,0 +1,20 @@
+{:deps {org.clojure/clojure {:mvn/version "1.12.0"}
+        io.github.seancorfield/deps-new {:git/tag "v0.8.0" :git/sha "2f96530"}}
+
+ :paths ["src" "resources"]
+
+ :aliases {:test
+           {:extra-paths ["test"]
+            :extra-deps {eftest/eftest {:mvn/version "0.6.0"}
+                         cloverage/cloverage {:mvn/version "1.2.4"}}
+            :exec-fn cloverage.coverage/run-project
+            :exec-args {:test-ns-path ["test"]
+                        :src-ns-path ["src"]
+                        :runner :eftest
+                        :runner-opts {:multithread? false}}}
+
+           :local-new {:extra-deps {io.github.seancorfield/deps-new {:git/tag "v0.4.12"
+                                                                     :git/sha "37aa288"}
+                                    clojure-stack-lite/clojure-stack-lite {:local/root "."}}
+                       :exec-fn org.corfield.new/create
+                       :exec-args {:template stack/lite}}}}

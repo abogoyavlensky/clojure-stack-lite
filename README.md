@@ -1,4 +1,4 @@
-# clojure-lite-stack
+# clojure-stack-lite
 
-A quick way to start a Clojure web app.
-Based on SQlite, HTMX, AlpineJS and TailwindCSS.
+A quick way to start a Clojure app.
+Bootstrap a Clojure app based on SQlite and server-side rendred frontend with HTMX, AlpineJS and TailwindCSS v4.

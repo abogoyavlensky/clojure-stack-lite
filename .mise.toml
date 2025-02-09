@@ -1,0 +1,4 @@
+[tools]
+java = "temurin-21.0.2+13.0.LTS"
+clojure = "1.12.0.1479"
+babashka = "1.12.194"
