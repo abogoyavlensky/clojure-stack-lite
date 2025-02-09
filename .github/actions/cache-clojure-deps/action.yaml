@@ -1,0 +1,10 @@
+name: Cache Clojure deps
+runs:
+  using: composite
+  steps:
+    - uses: actions/checkout@v4
+    - name: Cache Clojure deps
+      uses: actions/cache@v4
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-clojure-${{ hashFiles('**/deps.edn') }}

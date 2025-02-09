@@ -1,0 +1,23 @@
+name: Checks
+
+on:
+  push:
+    branches: [ master ]
+    tags:
+      - "*"
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/cache-clojure-deps
+      - uses: jdx/mise-action@v2
+        with:
+          install_args: "babashka java clojure"
+      - name: Run tests
+        run: |
+          bb test
+          bb new
