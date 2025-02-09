@@ -1,5 +1,11 @@
 {:tasks
  {:enter (println "Running task:" (:name (current-task)))
 
-  create {:doc "Create a new project"
-          :task (clojure "-X:local-new :name tmpl :overwrite :delete")}}}
+  test {:doc "Run tests for the template config"
+        :task (clojure "-X:test")}
+
+  new {:doc "Create a new project"
+       :task (clojure "-X:local-new :name tmpl :overwrite :delete")}
+
+  tag {:doc "Create and push a new git tag based on provided version"
+       :task (clojure "-T:slim tag :push true")}}}
