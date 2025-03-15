@@ -1,0 +1,5 @@
+{:data-fn io.github.abogoyavlensky.clojure-stack-lite/data-fn
+ :template-fn io.github.abogoyavlensky.clojure-stack-lite/template-fn
+ :transform
+ [["src" "src/{{main/file}}"]
+  ["test" "test/{{main/file}}"]]}

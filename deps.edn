@@ -16,8 +16,9 @@
                                                                      :git/sha "37aa288"}
                                     clojure-stack-lite/clojure-stack-lite {:local/root "."}}
                        :exec-fn org.corfield.new/create
-                       :exec-args {:template stack/lite}}
+                       :exec-args {:template io.github.abogoyavlensky/clojure-stack-lite}}
 
-           :slim {:deps {io.github.abogoyavlensky/slim {:mvn/version "0.2.1"}}
+           ; This alias is used to create and push just a new git tag based on version
+           :slim {:deps {io.github.abogoyavlensky/slim {:mvn/version "0.3.1"}}
                   :ns-default slim.lib
-                  :exec-args {:version "0.0.1-alpha"}}}}
+                  :exec-args {:version "0.1.0"}}}}

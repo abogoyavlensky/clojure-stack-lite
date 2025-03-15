@@ -1,0 +1,15 @@
+{:{{main/ns}}.db/db
+ {:jdbc-url #profile {:default "jdbc:sqlite:db/{{main/ns}}.sqlite"
+                      :test "jdbc:sqlite::memory:"}}
+
+ :{{main/ns}}.server/server
+ {:options {:port #profile {:default 8000
+                            :prod 80
+                            :test #free-port true}
+            :session-secret-key #profile {:default "test-secret-key"
+                                          :prod #env SESSION_SECRET_KEY}
+            :auto-reload? #profile {:default false
+                                    :dev true}
+            :cache-assets? #profile {:default false
+                                     :prod true}}
+  :db #ig/ref :{{main/ns}}.db/db}}

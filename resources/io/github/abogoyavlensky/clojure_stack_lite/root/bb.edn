@@ -1,0 +1,56 @@
+{:deps {io.github.abogoyavlensky/manifest-edn {:mvn/version "0.1.1"}}
+ :tasks
+ {:init (do
+          (def input-css-file "resources/public/css/input.css")
+          (def output-css-file "resources/public/css/output.css"))
+  :enter (println "Running task:" (:name (current-task)))
+
+  deps {:doc "Install all dev deps"
+        :task (clojure "-P -X:dev:test:outdated")}
+
+  fmt-check {:doc "Check code formatting"
+             :task (shell "cljfmt" "check")}
+
+  fmt {:doc "Fix code formatting"
+       :task (shell "cljfmt" "fix")}
+
+  lint-init {:doc "Linting project's classpath"
+             :task (shell "clj-kondo" "--parallel" "--dependencies" "--copy-configs"
+                     "--lint" (with-out-str (clojure "-Spath")))}
+
+  lint {:doc "Linting project's code"
+        :task (shell "clj-kondo" "--parallel" "--lint" "src" "test")}
+
+  outdated-check {:doc "Check outdated Clojure deps versions"
+                  :task (clojure "-M:outdated")}
+
+  outdated {:doc "Upgrade outdated Clojure deps versions"
+            :task (clojure "-M:outdated --upgrade --force")}
+
+  test {:doc "Run tests"
+        :task (clojure "-X:test")}
+
+  check {:doc "Run all code checks and tests"
+         :depends [fmt lint outdated test]}
+
+  css-watch {:doc "Rebuild css on file change in watch mode"
+             ; Use "exec" to be able to run in the repl
+             :task (shell "mise" "exec" "--" "tailwindcss" "-i" input-css-file "-o" output-css-file "--watch")}
+
+  css-build {:doc "Build minified css"
+             :task (shell "tailwindcss" "-i" input-css-file "-o" output-css-file "--minify")}
+
+  fetch-assets {:doc "Fetch static file assets from URLs"
+                :requires ([manifest-edn.core :as manifest])
+                :task (manifest/fetch-assets!
+                        [{:url "https://unpkg.com/htmx.org@2.0.4/dist/htmx.min.js"
+                          :filepath "js/htmx.min.js"}
+                         {:url "https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"
+                          :filepath "js/alpinejs.min.js"}])}
+
+  build {:doc "Build application uberjar"
+         :requires ([manifest-edn.core :as manifest])
+         :task (do
+                 (run 'css-build)
+                 (manifest/hash-assets!)
+                 (clojure "-T:build build"))}}}

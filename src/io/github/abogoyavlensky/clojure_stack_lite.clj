@@ -1,4 +1,4 @@
-(ns stack.lite)
+(ns io.github.abogoyavlensky.clojure-stack-lite)
 
 (defn data-fn
   "Example data-fn handler.

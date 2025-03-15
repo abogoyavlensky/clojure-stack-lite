@@ -1,7 +1,0 @@
-{:data-fn stack.lite/data-fn
- :template-fn stack.lite/template-fn
- ; TODO: Run formatter afterwards
- ;:post-process-fn lite/post-process-fn
- :transform
- [["src" "src/{{main/file}}"]
-  ["test" "test/{{main/file}}"]]}

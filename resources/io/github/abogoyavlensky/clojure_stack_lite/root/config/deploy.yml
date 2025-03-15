@@ -1,0 +1,28 @@
+<% require "dotenv"; Dotenv.load(".env") %>
+
+service: {{main/ns}}
+image: <%= ENV['REGISTRY_USERNAME'] %>/{{main/ns}}
+servers:
+  - <%= ENV['SERVER_IP'] %>
+
+proxy:
+  ssl: true
+  host: <%= ENV['APP_DOMAIN'] %>
+
+registry:
+  server: ghcr.io
+  username:
+    - REGISTRY_USERNAME
+  password:
+    - REGISTRY_PASSWORD
+
+# Configure builder setup.
+builder:
+  arch: amd64
+
+env:
+  secret:
+    - SESSION_SECRET_KEY
+
+volumes:
+  - "/root/{{main/ns}}-db:/app/db"

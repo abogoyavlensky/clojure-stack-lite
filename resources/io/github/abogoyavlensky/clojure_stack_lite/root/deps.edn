@@ -1,0 +1,45 @@
+{:deps {org.clojure/clojure {:mvn/version "1.12.0"}
+        ; logging
+        org.clojure/tools.logging {:mvn/version "1.3.0"}
+        ch.qos.logback/logback-classic {:mvn/version "1.5.17"}
+        ; system & config
+        integrant/integrant {:mvn/version "0.13.1"}
+        io.github.abogoyavlensky/integrant-extras {:mvn/version "0.1.2"}
+        ; server
+        metosin/reitit {:mvn/version "0.7.2"}
+        io.github.abogoyavlensky/reitit-extras {:mvn/version "0.1.17"}
+        ring/ring-jetty-adapter {:mvn/version "1.13.0"}
+        io.github.abogoyavlensky/manifest-edn {:mvn/version "0.1.1"}
+        ; db
+        hikari-cp/hikari-cp {:mvn/version "3.2.0"}
+        org.xerial/sqlite-jdbc {:mvn/version "3.49.1.0"}
+        com.github.seancorfield/next.jdbc {:mvn/version "1.3.1002"}
+        com.github.seancorfield/honeysql {:mvn/version "2.7.1295"}
+        dev.weavejester/ragtime {:mvn/version "0.11.0"}}
+
+ :paths ["src" "resources"]
+
+ :aliases {:dev {:extra-paths ["dev"]
+                 :extra-deps {integrant/repl {:mvn/version "0.4.0"}
+                              ring/ring-devel {:mvn/version "1.13.0"}
+                              io.github.tonsky/clojure-plus {:mvn/version "1.2.0"}}}
+
+           :test {:extra-paths ["test"]
+                  :extra-deps {eftest/eftest {:mvn/version "0.6.0"}
+                               cloverage/cloverage {:mvn/version "1.2.4"}
+                               hato/hato {:mvn/version "1.0.0"}
+                               etaoin/etaoin {:mvn/version "1.1.42"}
+                               org.testcontainers/testcontainers {:mvn/version "1.20.6"}}
+                  :exec-fn cloverage.coverage/run-project
+                  :exec-args {:test-ns-path ["test"]
+                              :src-ns-path ["src"]
+                              :runner :eftest
+                              :runner-opts {:multithread? false}}}
+
+           :outdated {:extra-deps {com.github.liquidz/antq {:mvn/version "2.11.1276"}}
+                      :main-opts ["-m" "antq.core" "--no-diff"]}
+
+           :build {:deps {io.github.abogoyavlensky/slim {:mvn/version "0.3.1"}}
+                   :ns-default slim.app
+                   :exec-args {:main-ns {{main/ns}}.core
+                               :src-dirs ["src" "resources" "resources-hashed"]}}}}
