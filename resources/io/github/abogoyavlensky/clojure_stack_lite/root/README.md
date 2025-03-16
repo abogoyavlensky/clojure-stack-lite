@@ -18,7 +18,7 @@ Check all available commands:
 bb tasks 
 ```
 
-_TODO: add futher instructions for development!_
+_TODO: add further instructions for development!_
 
 
 ## Deploy from local machine using Kamal

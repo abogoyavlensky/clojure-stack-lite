@@ -17,7 +17,7 @@ RUN bb build
 
 
 FROM eclipse-temurin:21.0.2_13-jre-alpine
-# TODO: update github username to actual one
+# TODO: update github username
 LABEL org.opencontainers.image.source=https://github.com/{{developer}}/{{main/ns}}
 
 WORKDIR /app

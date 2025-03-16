@@ -2,7 +2,7 @@
   "name": "{{main/ns}}",
   "short_name": "{{main/ns}}",
   "start_url": "/",
-  // TODO: add your domain!
+  // TODO: add domain of the project
   // "id": "https://{{main/ns}}.com/",
   "display": "standalone",
   "theme_color": "#ffffff",
