@@ -43,13 +43,12 @@ _TODO: add features!_
 
 The template generates a Clojure project with the following structure:
 
-
 ```
 ├── .clj-kondo/            # Clojure linting configuration
 ├── .github/               # GitHub Actions workflows and configurations
-├── .kamal/                # Kamal secrets template (_only used if you use Kamal_)
-├── config/                # Kamal deployment configuration (_only used if you use Kamal_)
-├── db/                    # Database files directory (_only used if you use SQLite_)
+├── .kamal/                # Kamal secrets template (only used if you use Kamal)
+├── config/                # Kamal deployment configuration (only used if you use Kamal)
+├── db/                    # Database empty directory (only used if you use SQLite)
 ├── dev/                   # Development configuration directory
 │   └── user.clj           # User-specific development configuration
 ├── resources/             # Static resources and configuration files
@@ -58,7 +57,7 @@ The template generates a Clojure project with the following structure:
 │   ├── config.edn         # Main configuration file for the application
 │   ├── config.dev.edn     # Development-specific configuration
 │   ├── config.e2e.edn     # Test-specific configuration for end-to-end testing
-│   └── logback.xml/       # Logging configuration file
+│   └── logback.xml        # Logging configuration file
 ├── src/                   # Source code directory
 │   └── {{name}}           # Main namespace directory
 │       ├── core.clj       # Application entry point
@@ -70,8 +69,7 @@ The template generates a Clojure project with the following structure:
 ├── test/                  # Test files directory
 │   └── {{name}}           # Test namespace directory
 │       ├── home_test.clj  # Example test for home page
-│       ├── test_utils.clj # Test utilities
-│       └── webdriver.clj  # Webdriver system component to be used in `config.e2e.edn`
+│       └── test_utils.clj # Test utilities
 ├── .cljfmt.edn            # Formatting configuration
 ├── .gitignore             # Git ignore rules
 ├── .mise.toml             # mise-en-place configuration with system dependencies

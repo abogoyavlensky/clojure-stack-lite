@@ -4,8 +4,7 @@
             [integrant-extras.tests :as ig-extras]
             [reitit-extras.tests :as reitit-extras]
             [{{main/ns}}.server :as-alias server]
-            [{{main/ns}}.test-utils :as test-utils]
-            [{{main/ns}}.webdriver :as-alias webdriver]))
+            [{{main/ns}}.test-utils :as test-utils]))
 
 (use-fixtures :once
               (ig-extras/with-system "config.e2e.edn"))
@@ -15,7 +14,7 @@
 
 (deftest test-home-page-loads-correctly
   (testing "Home page loads and displays correctly"
-    (let [driver (get-in ig-extras/*test-system* [::webdriver/webdriver :driver])
+    (let [driver (get-in ig-extras/*test-system* [::test-utils/webdriver :driver])
           server (::server/server ig-extras/*test-system*)
           url (reitit-extras/get-server-url server :container)]
 
