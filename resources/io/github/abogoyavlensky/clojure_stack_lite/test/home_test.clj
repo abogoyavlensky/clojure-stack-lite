@@ -20,7 +20,7 @@
           url (reitit-extras/get-server-url server :container)]
 
       ; Navigate to home page
-      (etaoin/go driver (str url "/home"))
+      (etaoin/go driver url)
       (etaoin/wait-visible driver {:tag :span
                                    :fn/has-text "Clojure Stack Lite"}
                            {:timeout 5})
