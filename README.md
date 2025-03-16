@@ -28,21 +28,10 @@ _TODO: add features!_
     TODO: add more instructions for updating the project configuration!
 
 3. Start development:
-   ```shell
-   # Set up repository
-   git init
-   git add .
-   # Run all checks
-   bb check
-   # Commit initial changes
-   git commit -m "Initial commit"
-   ```
-
    Manage project and start server from built-in REPL:
    ```shell
-   # Show all available tasks
-   bb tasks
-   bb check
+   cd myproject
+   # Run server in dev mode
    bb repl 
    (reset)
    ```
@@ -54,24 +43,47 @@ _TODO: add features!_
 
 The template generates a Clojure project with the following structure:
 
-; TODO: provide actual project structure!
+
 ```
-├── .clj-kondo/            # Clojure linting configuration
+├── .clj-kondo/            # Clojure linting cache, imports and configuration
+│   └── config.edn         # Clojure linting configuration
 ├── .github/               # GitHub Actions workflows and configurations
+│   ├── actions/           # Common actions for workflows
+│   └── workflows/         # GitHub Actions workflow definitions
+│       ├── checks.yaml    # Lint, format, test and check outdated deps on push
+│       └── deploy.yaml    # Deployment workflow
+├── .kamal/                # Kamal secrets template (_only used if you use Kamal_)
+├── config/                # Kamal deployment configuration (_only used if you use Kamal_)
+├── db/                    # Database files directory (_only used if you use SQLite_)
 ├── dev/                   # Development configuration directory
 │   └── user.clj           # User-specific development configuration
+├── resources/             # Static resources and configuration files
+│   ├── public/            # Public assets (CSS, JS, images)
+│   ├── migrations/        # Database migration files
+│   ├── config.edn         # Main configuration file for the application
+│   ├── config.dev.edn     # Development-specific configuration
+│   ├── config.e2e.edn     # Test-specific configuration for end-to-end testing
+│   └── logback.xml/       # Logging configuration file
 ├── src/                   # Source code directory
 │   └── {{name}}           # Main namespace directory
-│       └── core.clj       # Main namespace file
+│       ├── core.clj       # Application entry point
+│       ├── db.clj         # Database system component and main operations
+│       ├── handlers.clj   # HTTP request handlers
+│       ├── routes.clj     # Route definitions
+│       ├── server.clj     # Server system component
+│       └── views.clj      # HTML templates and components with Hiccup
 ├── test/                  # Test files directory
 │   └── {{name}}           # Test namespace directory
-│       └── core_test.clj  # Test namespace file
+│       ├── home_test.clj  # Example test for home page
+│       ├── test_utils.clj # Test utilities
+│       └── webdriver.clj  # Webdriver system component to be used in `config.e2e.edn`
 ├── .cljfmt.edn            # Formatting configuration
 ├── .gitignore             # Git ignore rules
-├── .mise.toml             # mise-en-place configuration with system tools versions
-├── bb.edn                 # Babashka tasks configuration
+├── .mise.toml             # mise-en-place configuration with system dependencies
+├── bb.edn                 # Babashka tasks configuration for managing application
 ├── deps.edn               # Clojure dependencies and aliases
-├── LICENSE                # License file
+├── Dockerfile             # Dockerfile for building the application image
+├── LICENSE                # License file, AGPLv3 by default
 └── README.md              # Project documentation
 ```
 
