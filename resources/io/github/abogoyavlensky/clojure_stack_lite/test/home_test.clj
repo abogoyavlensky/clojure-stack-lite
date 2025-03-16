@@ -1,17 +1,17 @@
-(ns {{main/ns}}.home-test
+(ns tmpl-prj.home-test
   (:require [clojure.test :refer :all]
             [etaoin.api :as etaoin]
             [integrant-extras.tests :as ig-extras]
-            [{{main/ns}}.server :as-alias server]
-            [{{main/ns}}.test-utils :as test-utils]
-            [{{main/ns}}.webdriver :as-alias webdriver]
-            [reitit-extras.tests :as reitit-extras]))
+            [reitit-extras.tests :as reitit-extras]
+            [tmpl-prj.server :as-alias server]
+            [tmpl-prj.test-utils :as test-utils]
+            [tmpl-prj.webdriver :as-alias webdriver]))
 
 (use-fixtures :once
-  (ig-extras/with-system "config.e2e.edn"))
+              (ig-extras/with-system "config.e2e.edn"))
 
 (use-fixtures :each
-  test-utils/with-truncated-tables)
+              test-utils/with-truncated-tables)
 
 (deftest test-home-page-loads-correctly
   (testing "Home page loads and displays correctly"

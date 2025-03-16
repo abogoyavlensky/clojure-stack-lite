@@ -1,11 +1,11 @@
-(ns {{main/ns}}.server
+(ns tmpl-prj.server
   (:require [clojure.tools.logging :as log]
             [integrant-extras.core :as ig-extras]
             [integrant.core :as ig]
-            [{{main/ns}}.handlers :as handlers]
-            [{{main/ns}}.routes :as app-routes]
             [reitit-extras.core :as reitit-extras]
-            [ring.adapter.jetty :as jetty])
+            [ring.adapter.jetty :as jetty]
+            [tmpl-prj.handlers :as handlers]
+            [tmpl-prj.routes :as app-routes])
   (:import com.zaxxer.hikari.HikariDataSource))
 
 (defmethod ig/assert-key ::server

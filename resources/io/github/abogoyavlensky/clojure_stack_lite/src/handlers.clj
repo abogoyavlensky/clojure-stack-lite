@@ -1,7 +1,7 @@
-(ns {{main/ns}}.handlers
-  (:require [{{main/ns}}.views :as views]
-            [reitit-extras.core :as reitit-extras]
-            [ring.util.response :as response]))
+(ns tmpl-prj.handlers
+  (:require [reitit-extras.core :as reitit-extras]
+            [ring.util.response :as response]
+            [tmpl-prj.views :as views]))
 
 (defn home-handler
   [_]
