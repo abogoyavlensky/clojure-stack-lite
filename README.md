@@ -45,13 +45,8 @@ The template generates a Clojure project with the following structure:
 
 
 ```
-├── .clj-kondo/            # Clojure linting cache, imports and configuration
-│   └── config.edn         # Clojure linting configuration
+├── .clj-kondo/            # Clojure linting configuration
 ├── .github/               # GitHub Actions workflows and configurations
-│   ├── actions/           # Common actions for workflows
-│   └── workflows/         # GitHub Actions workflow definitions
-│       ├── checks.yaml    # Lint, format, test and check outdated deps on push
-│       └── deploy.yaml    # Deployment workflow
 ├── .kamal/                # Kamal secrets template (_only used if you use Kamal_)
 ├── config/                # Kamal deployment configuration (_only used if you use Kamal_)
 ├── db/                    # Database files directory (_only used if you use SQLite_)
