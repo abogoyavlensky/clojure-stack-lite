@@ -5,11 +5,11 @@
 
 (defn home-handler
   [_]
-  (reitit-extras/render-html index/starter-page))
+  (reitit-extras/render-html views/home-page))
 
 (defn default-handler
   [error-text status-code]
   (fn [_]
-    (-> (index/error-page error-text)
+    (-> (views/error-page error-text)
         (reitit-extras/render-html)
         (response/status status-code))))

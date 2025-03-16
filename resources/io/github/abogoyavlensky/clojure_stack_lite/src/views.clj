@@ -43,8 +43,8 @@
       [:h1 {:class ["text-5xl"]} text]]]))
 
 (def home-page
-  ; ========= TODO: Update starter page  ========================
   (base
+    ; ========= TODO: Update home page  ========================
     [:div
      {:class ["text-slate-800" "min-h-screen" "flex" "flex-col"]}
      [:main {:class ["flex-grow" "flex" "items-center" "justify-center"]}

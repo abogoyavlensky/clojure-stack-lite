@@ -13,14 +13,14 @@
 (use-fixtures :each
   test-utils/with-truncated-tables)
 
-(deftest test-index-page-loads-correctly
-  (testing "Index page loads and displays correctly"
+(deftest test-home-page-loads-correctly
+  (testing "Home page loads and displays correctly"
     (let [driver (get-in ig-extras/*test-system* [::webdriver/webdriver :driver])
           server (::server/server ig-extras/*test-system*)
           url (reitit-extras/get-server-url server :container)]
 
       ; Navigate to home page
-      (etaoin/go driver (str url "/index"))
+      (etaoin/go driver (str url "/home"))
       (etaoin/wait-visible driver {:tag :span
                                    :fn/has-text "Clojure Stack Lite"}
                            {:timeout 5})
