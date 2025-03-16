@@ -1,11 +1,11 @@
-(ns tmpl-prj.home-test
+(ns {{main/ns}}.home-test
   (:require [clojure.test :refer :all]
             [etaoin.api :as etaoin]
             [integrant-extras.tests :as ig-extras]
             [reitit-extras.tests :as reitit-extras]
-            [tmpl-prj.server :as-alias server]
-            [tmpl-prj.test-utils :as test-utils]
-            [tmpl-prj.webdriver :as-alias webdriver]))
+            [{{main/ns}}.server :as-alias server]
+            [{{main/ns}}.test-utils :as test-utils]
+            [{{main/ns}}.webdriver :as-alias webdriver]))
 
 (use-fixtures :once
               (ig-extras/with-system "config.e2e.edn"))
