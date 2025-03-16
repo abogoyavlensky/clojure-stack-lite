@@ -38,12 +38,17 @@ _TODO: add features!_
    git commit -m "Initial commit"
    ```
 
-   Manage project:
+   Manage project and start server from built-in REPL:
    ```shell
-    # Show all available tasks
-    bb tasks
+   # Show all available tasks
+   bb tasks
+   bb check
+   bb repl 
+   (reset)
    ```
-   And check out README.md for more information on how to use the project.
+   
+   The server should be available at `http://localhost:8000`.
+   Check out README.md for more information on how to use the project.
 
 ## Project structure
 
