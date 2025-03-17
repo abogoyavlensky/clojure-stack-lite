@@ -37,27 +37,18 @@ Based on SQLite, HTMX, AlpineJS, and TailwindCSS v4.
 
 ## Features
 
-- **Server-Side Rendering**: Use Hiccup for HTML generation
-- **Modern Frontend Stack**: Dynamic frontend with AlpineJS and HTMX for interactive components
-- **Styling**: Pre-configured with TailwindCSS v4 for modern, utility-first styling
-- **Database**: SQLite integration for simple yet powerful data persistence
-  - Migration system with Ragtime
-  - SQL query building with HoneySQL
-  - WAL mode enabled for better concurrency
-- **Development Tools**: 
-  - Hot reloading for rapid development
-  - REPL-driven development support
-  - Integrated testing setup with code coverage
-  - Dependency management with deps.edn
-  - Babashka tasks for common operations
-- **Deployment Ready**: 
-  - Deployment setup with Kamal
-  - GitHub Actions workflows for CI/CD
-- **Code Quality**:
-  - Clojure formatting (cljfmt)
-  - Linting configuration (clj-kondo)
-  - Test infrastructure with eftest and cloverage
-  - Dependency version checking (antq)
+- Server-Side Rendering with HTMX and Hiccup
+- Dynamic Frontend with HTMX and AlpineJS without build step
+- Utility-first CSS with TailwindCSS v4
+- Lightweight and Fast: SQLite database
+- Zero-downtime deployment with Kamal
+- Integrated CI/CD with GitHub Actions
+- Hot reloading for rapid development
+- REPL-driven development support
+- End-to-end testing setup with code coverage
+- Dependency management with deps.edn
+- Babashka tasks for common operations
+- Linting and formatting tools setup
 
 ## Stack
 
