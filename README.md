@@ -30,8 +30,8 @@ Based on SQLite, HTMX, AlpineJS, and TailwindCSS v4.
    Check out project's README.md and template documentation for more information on how to use the project.
 
 > [!TIP]
-> You might need to update the project configuration for going to production: 
-  label in `Dockerfile`, domain in `resources/public/manifest.json` and description in `README.md`
+> Edit some details before going to production: label in `Dockerfile`, 
+  domain in `resources/public/manifest.json` and description in `README.md`
 
 ## Features
 
