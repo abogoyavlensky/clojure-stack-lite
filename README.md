@@ -49,6 +49,7 @@ Get started in seconds by building your new Clojure application and be productiv
 - 🔥 Auto-reload and REPL-driven workflow for rapid development
 - 🧪 E2E and integration testing setup with coverage
 - ⚙️ deps.edn and Babashka tasks for efficient project management
+- 📱 Basic PWA support (without service worker)
 
 ## Stack
 
