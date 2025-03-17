@@ -119,7 +119,7 @@ The template generates a Clojure project with the following structure:
 └── README.md              # Project documentation
 ```
 
-## Development
+## Template Development
 
 ### Requirements
 
