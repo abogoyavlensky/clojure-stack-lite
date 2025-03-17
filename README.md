@@ -22,7 +22,8 @@ Based on SQLite, HTMX, AlpineJS, and TailwindCSS v4.
 
    ```shell
    cd myproject
-   bb repl 
+   mise trust
+   bb clj-repl
    (reset)
    ```
 
