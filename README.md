@@ -3,28 +3,6 @@
 A quick way to start a full-stack Clojure app with server-side rendering. 
 Based on SQLite, HTMX, AlpineJS, and TailwindCSS v4.
 
-## Features
-
-- **Server-Side Rendering**: Use Hiccup for HTML generation
-- **Modern Frontend Stack**: Dynamic frontend with AlpineJS and HTMX for interactive components
-- **Styling**: Pre-configured with TailwindCSS v4 for modern, utility-first styling
-- **Database**: SQLite integration for simple yet powerful data persistence
-- **Development Tools**: 
-  - Hot reloading for rapid development
-  - REPL-driven development support
-  - Integrated testing setup
-- **Deployment Ready**: 
-  - Docker configuration included
-  - Deployment setup with Kamal
-  - GitHub Actions workflows for CI/CD
-- **Code Quality**:
-  - Clojure formatting (cljfmt)
-  - Linting configuration (clj-kondo)
-  - Test infrastructure
-
-## Stack:
-
-
 ## Usage
 
 1. Create a new Clojure project using Clojure CLI:
@@ -40,22 +18,76 @@ Based on SQLite, HTMX, AlpineJS, and TailwindCSS v4.
    neil new io.github.abogoyavlensky/clojure-stack-lite myproject
    ```
 
-2. Update the project configuration:
+2. Start development:
+
+   ```shell
+   cd myproject
+   bb repl 
+   (reset)
+   ```
+
+   The server should be available at `http://localhost:8000`.
+   Check out project's README.md and template documentation for more information on how to use the project.
+
+> [!TIP]
+> You might need to update the project configuration for going to production:
     - Edit image label in `Dockerfile`
     - Edit project domain in `resources/public/manifest.json`
     - Edit project description in `README.md`
 
-3. Start development:
-   Manage project and start server from built-in REPL:
-   ```shell
-   cd myproject
-   # Run server in dev mode
-   bb repl 
-   (reset)
-   ```
-   
-   The server should be available at `http://localhost:8000`.
-   Check out README.md for more information on how to use the project.
+## Features
+
+- **Server-Side Rendering**: Use Hiccup for HTML generation
+- **Modern Frontend Stack**: Dynamic frontend with AlpineJS and HTMX for interactive components
+- **Styling**: Pre-configured with TailwindCSS v4 for modern, utility-first styling
+- **Database**: SQLite integration for simple yet powerful data persistence
+  - Migration system with Ragtime
+  - SQL query building with HoneySQL
+  - WAL mode enabled for better concurrency
+- **Development Tools**: 
+  - Hot reloading for rapid development
+  - REPL-driven development support
+  - Integrated testing setup with code coverage
+  - Dependency management with deps.edn
+  - Babashka tasks for common operations
+- **Deployment Ready**: 
+  - Deployment setup with Kamal
+  - GitHub Actions workflows for CI/CD
+- **Code Quality**:
+  - Clojure formatting (cljfmt)
+  - Linting configuration (clj-kondo)
+  - Test infrastructure with eftest and cloverage
+  - Dependency version checking (antq)
+
+## Stack
+
+### Backend
+- **Integrant**: Component lifecycle management for applications
+- **Reitit**: Fast data-driven routing
+- **Ring/Jetty**: HTTP server adapter
+- **Hiccup**: HTML generation from Clojure data structures
+
+### Database
+- **SQLite**: Lightweight, file-based database
+- **next.jdbc**: JDBC-based database access
+- **HoneySQL**: SQL as Clojure data structures
+- **Ragtime**: Database migrations
+
+### Frontend
+- **HTMX 2.0**: HTML extensions for AJAX, WebSockets without writing JavaScript
+- **AlpineJS 3.x**: Lightweight JavaScript framework for adding behavior
+- **TailwindCSS 4**: Utility-first CSS framework
+
+### Development
+- **Babashka**: Project management with tasks
+- **clj-kondo**: Static analyzer and linter
+- **cljfmt**: Code formatter
+- **eftest/cloverage**: Testing and code coverage
+
+### Deployment
+- **Docker**: Containerization
+- **Kamal**: Zero-downtime deployments
+- **GitHub Actions**: CI/CD workflows
 
 ## Project structure
 
