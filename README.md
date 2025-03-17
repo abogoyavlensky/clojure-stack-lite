@@ -41,7 +41,7 @@ Get started in seconds by building your new Clojure application and be productiv
 ## Features
 
 - 🏗️ Robust Clojure stack powered by Integrant and Reitit/Ring
-- 🎨 Dynamic, zero-build JS using HTMX & AlpineJS
+- 🎨 Dynamic, zero-build frontend using HTMX & AlpineJS
 - 💅 Modern styling with TailwindCSS v4
 - 📦 Lightweight and Fast SQLite database
 - 🔄 Zero-downtime deployment via Kamal
