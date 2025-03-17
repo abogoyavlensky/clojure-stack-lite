@@ -5,12 +5,14 @@ _TODO: add project description_
 
 ## Development
 
-Install [mise-en-place](https://mise.jdx.dev/getting-started.html#quickstart) (or [asdf](https://asdf-vm.com/guide/getting-started.html)),
-then to install system deps run:
+Install Java, Clojure, Babashka and TailwindCSS manually or via [mise](https://mise.jdx.dev/):
 
 ```shell
 mise install
 ```
+
+> [!NOTE]
+> This command will install Ruby to work with Kamal. You might need to install `libyaml`: `brew install libyaml  # or on Ubuntu: `sudo apt-get install libyaml-dev`
 
 Check all available commands:
 
@@ -48,6 +50,7 @@ SESSION_SECRET_KEY=secret-key
 Install ruby and kamal:
 
 ```shell
+brew install libyaml  # or for Ubuntu: `sudo apt-get install libyaml-dev` 
 mise install ruby
 gem install kamal -v 2.3.0
 ```
@@ -86,7 +89,7 @@ ssh-keygen -t ed25519 -C "your_email@example.com"
 
 ## Update assets
 
-The idea is to vendor all json files in the project repo eliminating build step for js part.
+The idea is to vendor all js-files in the project repo eliminating build step for js part.
 
 Once you want to update the version of AlpineJS, HTMX or add a new asset, edit version in bb.edn file at `fetch-assets` and run:
 
