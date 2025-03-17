@@ -59,6 +59,6 @@
         " and define a handler in " [:code {:class ["bg-slate-100" "px-1" "rounded"]} "src/yourproject/handlers.clj"]]
        [:div {:class ["mb-16"]}
         [:a {:class ["bg-slate-900" "hover:bg-slate-800" "text-white" "font-medium" "py-3" "px-8" "rounded-lg" "transition-colors" "duration-200" "mr-4"]
-             :href "https://github.com/bogoyavlensky/clojure-stack-lite"} "Get Started"]]]]
+             :href "https://stack.bogoyavlensky.com/lite/docs"} "Get Started"]]]]
      [:footer {:class ["py-6" "text-center" "text-sm" "text-slate-500"]}
       [:p "Made with ❤️ for the Clojure community"]]]))
