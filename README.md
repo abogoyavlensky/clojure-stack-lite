@@ -37,18 +37,18 @@ Based on SQLite, HTMX, AlpineJS, and TailwindCSS v4.
 
 ## Features
 
-- Server-Side Rendering with HTMX and Hiccup
-- Dynamic Frontend with HTMX and AlpineJS without build step
-- Utility-first CSS with TailwindCSS v4
-- Lightweight and Fast: SQLite database
-- Zero-downtime deployment with Kamal
-- Integrated CI/CD with GitHub Actions
-- Hot reloading for rapid development
-- REPL-driven development support
-- End-to-end testing setup with code coverage
-- Dependency management with deps.edn
-- Babashka tasks for common operations
-- Linting and formatting tools setup
+🚀 SSR with HTMX & Hiccup for blazing-fast pages
+🎨 Zero-build frontend using HTMX + AlpineJS
+💅 Modern styling with TailwindCSS v4
+📦 Lightweight and Fast SQLite database
+🔄 Zero-downtime deployments via Kamal
+⚡ GitHub Actions CI/CD pipeline
+🔥 Hot reload for rapid development
+🛠 REPL-driven development workflow
+🧪 Complete E2E testing with coverage
+📚 Simple deps.edn dependency management
+⚙️ Efficient Babashka task for common operations
+✨ Built-in linting and formatting
 
 ## Stack
 
