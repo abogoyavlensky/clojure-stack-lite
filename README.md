@@ -41,15 +41,14 @@ Get started in seconds by building your new Clojure application and be productiv
 ## Features
 
 - 🏗️ Robust Clojure stack powered by Integrant and Reitit/Ring
-- 🎨 Dynamic, zero-build frontend using HTMX & AlpineJS
-- 💅 Modern styling with TailwindCSS v4
-- 📦 Lightweight and Fast SQLite database
+- 🎨 Frontend using HTMX, AlpineJS and TailwindCSS v4
+- 📦 Lightweight and fast SQLite database
 - 🔄 Zero-downtime deployment via Kamal
 - ⚡ GitHub Actions CI/CD pipeline
-- 🔥 Auto-reload and REPL-driven workflow for rapid development
-- 🧪 E2E and integration testing setup with coverage
-- ⚙️ deps.edn and Babashka tasks for efficient project management
-- 📱 Basic PWA support (without service worker)
+- 🧪 E2E and unit testing setup with coverage
+- 🔍 Linting, formatting and deps version management
+- 📱 Basic PWA support out of the box (without service worker)
+- ⚙️ deps.edn and Babashka Tasks for efficient project management
 
 ## Stack
 
@@ -58,6 +57,7 @@ Get started in seconds by building your new Clojure application and be productiv
 - **Reitit**: Fast data-driven routing
 - **Ring/Jetty**: HTTP server adapter
 - **Hiccup**: HTML generation from Clojure data structures
+- **Malli**: Data validation and specification
 
 ### Database
 - **SQLite**: Lightweight, file-based database
