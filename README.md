@@ -53,7 +53,7 @@ Based on SQLite, HTMX, AlpineJS, and TailwindCSS v4.
 ## Stack
 
 ### Backend
-- **Integrant**: Component lifecycle management for applications
+- **Integrant**: Component lifecycle management for application
 - **Reitit**: Fast data-driven routing
 - **Ring/Jetty**: HTTP server adapter
 - **Hiccup**: HTML generation from Clojure data structures
@@ -65,8 +65,8 @@ Based on SQLite, HTMX, AlpineJS, and TailwindCSS v4.
 - **Ragtime**: Database migrations
 
 ### Frontend
-- **HTMX 2.0**: HTML extensions for AJAX, WebSockets without writing JavaScript
-- **AlpineJS 3.x**: Lightweight JavaScript framework for adding behavior
+- **HTMX 2**: HTML extensions for AJAX without writing JavaScript
+- **AlpineJS 3**: Lightweight JavaScript framework for adding behavior
 - **TailwindCSS 4**: Utility-first CSS framework
 
 ### Development
