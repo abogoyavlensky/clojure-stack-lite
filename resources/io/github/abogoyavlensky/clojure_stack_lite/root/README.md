@@ -5,14 +5,14 @@ _TODO: add project description_
 
 ## Development
 
-Install Java, Clojure, Babashka and TailwindCSS manually or via [mise](https://mise.jdx.dev/):
+Install Java, Clojure, Babashka, TailwindCSS and other tools manually or via [mise](https://mise.jdx.dev/):
 
 ```shell
 mise install
 ```
 
 > [!NOTE]
-> This command will install Ruby to work with Kamal. You might need to install `libyaml`: `brew install libyaml  # or on Ubuntu: `sudo apt-get install libyaml-dev`
+> This command will install Ruby to work with Kamal. You might need to install `libyaml` before running it: `brew install libyaml  # or on Ubuntu: sudo apt-get install libyaml-dev`
 
 Check all available commands:
 
