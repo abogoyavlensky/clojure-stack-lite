@@ -113,7 +113,7 @@ The template generates a Clojure project with the following structure:
 ├── bb.edn                 # Babashka tasks configuration for managing application
 ├── deps.edn               # Clojure dependencies and aliases
 ├── Dockerfile             # Dockerfile for building the application image
-├── LICENSE                # License file, AGPLv3 by default
+├── LICENSE                # License file, AGPLv3 by default, for motivation check: https://plausible.io/blog/open-source-licenses
 └── README.md              # Project documentation
 ```
 
