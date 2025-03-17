@@ -17,7 +17,7 @@ RUN bb build
 
 
 FROM eclipse-temurin:21.0.2_13-jre-alpine
-# TODO: update github username
+# TODO: update github username to manage images on the ghcr.io
 LABEL org.opencontainers.image.source=https://github.com/{{developer}}/{{main/ns}}
 
 WORKDIR /app
