@@ -1,11 +1,27 @@
 # Clojure Stack Lite
 
-A quick way to start a full-stack Clojure app with server-side rendering.
-Based on SQLite, HTMX, AlpineJS and TailwindCSS v4.
+A quick way to start a full-stack Clojure app with server-side rendering. 
+Based on SQLite, HTMX, AlpineJS, and TailwindCSS v4.
 
 ## Features
 
-_TODO: add features!_
+- **Server-Side Rendering**: Built-in support for server-side rendering using Clojure and Hiccup
+- **Modern Frontend Stack**: Integrated with HTMX for dynamic updates and AlpineJS for client-side interactivity
+- **Styling**: Pre-configured with TailwindCSS v4 for modern, utility-first styling
+- **Database**: SQLite integration for simple yet powerful data persistence
+- **Development Tools**: 
+  - Hot reloading for rapid development
+  - REPL-driven development support
+  - Integrated testing setup
+- **Deployment Ready**: 
+  - Docker configuration included
+  - Kamal deployment setup
+  - GitHub Actions workflows
+- **Code Quality**:
+  - Clojure formatting (cljfmt)
+  - Linting configuration (clj-kondo)
+  - Test infrastructure
+- **Project Structure**: Well-organized directory structure following Clojure best practices
 
 ## Usage
 
