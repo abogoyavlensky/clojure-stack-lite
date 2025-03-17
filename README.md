@@ -38,7 +38,7 @@ Based on SQLite, HTMX, AlpineJS, and TailwindCSS v4.
 - 🎨 Dynamic, zero-build JS using HTMX & AlpineJS
 - 💅 Modern styling with TailwindCSS v4
 - 📦 Lightweight and Fast SQLite database
-- 🔄 Zero-downtime deployments via Kamal
+- 🔄 Zero-downtime deployment via Kamal
 - ⚡ GitHub Actions CI/CD pipeline
 - 🔥 Hot reload and REPL-driven workflow for rapid development
 - 🧪 Complete E2E testing with coverage
