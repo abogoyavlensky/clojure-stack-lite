@@ -38,7 +38,7 @@ Based on SQLite, HTMX, AlpineJS, and TailwindCSS v4.
 ## Features
 
 - 🚀 SSR with HTMX & Hiccup for blazing-fast pages
-- 🎨 Zero-build frontend using HTMX + AlpineJS
+- 🎨 Zero-build JS using HTMX + AlpineJS
 - 💅 Modern styling with TailwindCSS v4
 - 📦 Lightweight and Fast SQLite database
 - 🔄 Zero-downtime deployments via Kamal
