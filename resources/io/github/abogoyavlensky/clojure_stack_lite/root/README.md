@@ -1,5 +1,7 @@
 # {{main/ns}}
 
+_This application is generated with [clojure-stack-lite](https://github.com/abogoyavlensky/clojure-stack-lite)._
+
 _TODO: add project description_
 
 

@@ -3,6 +3,10 @@
 A quick way to start a full-stack Clojure app with server-side rendering. 
 Based on SQLite, HTMX, AlpineJS, and TailwindCSS v4.
 
+This template is designed to be lightweight and easy to use, with a focus on rapid development and deployment. Minimal distraction and sane defaults. Everything is streamlined to give you a solid foundation for building modern web applications.
+
+I believe, it should take few seconds to start a new Clojure project and be productive.
+
 ## Usage
 
 1. Create a new Clojure project using Clojure CLI:
@@ -18,11 +22,11 @@ Based on SQLite, HTMX, AlpineJS, and TailwindCSS v4.
    neil new io.github.abogoyavlensky/clojure-stack-lite myproject
    ```
 
-2. Start development:
+2. Start development (_with [mise](https://mise.jdx.dev/getting-started.html)_):
 
    ```shell
    cd myproject
-   mise trust
+   mise trust && mise install
    bb clj-repl
    (reset)
    ```
@@ -36,15 +40,15 @@ Based on SQLite, HTMX, AlpineJS, and TailwindCSS v4.
 
 ## Features
 
+- 🏗️ Robust Clojure stack powered by Integrant and Reitit/Ring
 - 🎨 Dynamic, zero-build JS using HTMX & AlpineJS
 - 💅 Modern styling with TailwindCSS v4
 - 📦 Lightweight and Fast SQLite database
 - 🔄 Zero-downtime deployment via Kamal
 - ⚡ GitHub Actions CI/CD pipeline
-- 🔥 Hot reload and REPL-driven workflow for rapid development
-- 🧪 Complete E2E testing with coverage
+- 🔥 Auto-reload and REPL-driven workflow for rapid development
+- 🧪 E2E and integration testing setup with coverage
 - ⚙️ deps.edn and Babashka tasks for efficient project management
-- ✨ Built-in linting and formatting
 
 ## Stack
 
@@ -124,6 +128,8 @@ The template generates a Clojure project with the following structure:
 - [ ] Datalevin support
 - [ ] DaisyUI support
 - [ ] More deployment options (Fly.io, Railway, etc.)
+- [ ] Queue support (SQLite, Redis, etc.)
+- [ ] Websocket support out of the box
 
 ## Template Development
 
