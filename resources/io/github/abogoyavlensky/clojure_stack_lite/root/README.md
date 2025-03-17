@@ -8,6 +8,7 @@ _TODO: add project description_
 Install Java, Clojure, Babashka, TailwindCSS and other tools manually or via [mise](https://mise.jdx.dev/):
 
 ```shell
+mise trust
 mise install
 ```
 
