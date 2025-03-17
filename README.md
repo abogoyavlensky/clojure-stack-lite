@@ -5,8 +5,8 @@ Based on SQLite, HTMX, AlpineJS, and TailwindCSS v4.
 
 ## Features
 
-- **Server-Side Rendering**: Built-in support for server-side rendering using Clojure and Hiccup
-- **Modern Frontend Stack**: Integrated with HTMX for dynamic updates and AlpineJS for client-side interactivity
+- **Server-Side Rendering**: Use Hiccup for HTML generation
+- **Modern Frontend Stack**: Dynamic frontend with AlpineJS and HTMX for interactive components
 - **Styling**: Pre-configured with TailwindCSS v4 for modern, utility-first styling
 - **Database**: SQLite integration for simple yet powerful data persistence
 - **Development Tools**: 
@@ -15,13 +15,15 @@ Based on SQLite, HTMX, AlpineJS, and TailwindCSS v4.
   - Integrated testing setup
 - **Deployment Ready**: 
   - Docker configuration included
-  - Kamal deployment setup
-  - GitHub Actions workflows
+  - Deployment setup with Kamal
+  - GitHub Actions workflows for CI/CD
 - **Code Quality**:
   - Clojure formatting (cljfmt)
   - Linting configuration (clj-kondo)
   - Test infrastructure
-- **Project Structure**: Well-organized directory structure following Clojure best practices
+
+## Stack:
+
 
 ## Usage
 
