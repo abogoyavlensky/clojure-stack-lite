@@ -52,7 +52,7 @@ Install ruby and kamal:
 ```shell
 brew install libyaml  # or for Ubuntu: `sudo apt-get install libyaml-dev` 
 mise install ruby
-gem install kamal -v 2.3.0
+gem install kamal -v 2.5.3
 ```
 
 First deploy to the fresh server:
