@@ -116,6 +116,14 @@ The template generates a Clojure project with the following structure:
 └── README.md              # Project documentation
 ```
 
+## Roadmap
+
+- [ ] Add more examples and documentation
+- [ ] Postgres support
+- [ ] Datalevin support
+- [ ] DaisyUI support
+- [ ] More deployment options (Fly.io, Railway, etc.)
+
 ## Template Development
 
 ### Requirements
