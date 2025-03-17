@@ -23,9 +23,9 @@ _TODO: add features!_
    ```
 
 2. Update the project configuration:
-    - Edit documentation in `README.md`
-
-    TODO: add more instructions for updating the project configuration!
+    - Edit image label in `Dockerfile`
+    - Edit project domain in `resources/public/manifest.json`
+    - Edit project description in `README.md`
 
 3. Start development:
    Manage project and start server from built-in REPL:

@@ -15,11 +15,24 @@ mise install
 Check all available commands:
 
 ```shell
-bb tasks 
+bb tasks
 ```
 
-_TODO: add further instructions for development!_
+Run lint, formatting, tests and checking outdated dependencies:
 
+```shell
+bb check
+```
+
+Run server with built-in REPL from terminal:
+
+ ```shell
+bb repl 
+(reset)
+````
+
+Once server is started, it will automatically reload on code changes in the backend and TailwindCSS classes.
+The server should be available at `http://localhost:8000`.
 
 ## Deploy from local machine using Kamal
 
@@ -53,7 +66,7 @@ kamal deploy
 
 ## Deploy from Github Actions
 
-Setup secrets fro Actions:
+Setup secrets for Actions:
 
 ```shell
 SERVER_IP=192.168.0.1
@@ -70,3 +83,16 @@ To generate SSH keys, run:
 ```shell
 ssh-keygen -t ed25519 -C "your_email@example.com"
 ```
+
+## Update assets
+
+The idea is to vendor all json files in the project repo eliminating build step for js part.
+
+Once you want to update the version of AlpineJS, HTMX or add a new asset, edit version in bb.edn file at `fetch-assets` and run:
+
+```shell
+bb fetch-assets
+```
+
+Your assets will be updated in `resources/public` folder.
+
