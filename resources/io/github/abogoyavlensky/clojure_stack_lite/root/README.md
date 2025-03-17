@@ -75,6 +75,7 @@ Setup secrets for Actions:
 SERVER_IP=192.168.0.1
 APP_DOMAIN=app.domain.com
 SSH_PRIVATE_KEY=secret-ssh-key
+SESSION_SECRET_KEY=secret-key
 ```
 
 ### Notes
