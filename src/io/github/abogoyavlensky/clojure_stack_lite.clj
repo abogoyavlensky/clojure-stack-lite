@@ -7,9 +7,15 @@
   Returning nil means no changes to options data."
   [_data])
 
+(defn post-process-fn
+  "Example post-process-fn handler.
+
+  Can programmatically modify files in the generated project."
+  [edn data]
+  (when (true? (:debug data))
+    (println "post-process-fn not modifying" (:target-dir data))))
 
 ; Transform dirs
-
 (defn template-fn
   "Example template-fn handler.
 

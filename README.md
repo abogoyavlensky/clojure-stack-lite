@@ -131,6 +131,7 @@ The template generates a Clojure project with the following structure:
 - [ ] More deployment options (Fly.io, Railway, etc.)
 - [ ] Queue support (SQLite, Redis, etc.)
 - [ ] Websocket support out of the box
+- [ ] Add optional register/auth flow
 
 ## Template Development
 

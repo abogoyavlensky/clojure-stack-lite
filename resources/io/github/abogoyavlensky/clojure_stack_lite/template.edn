@@ -1,5 +1,7 @@
 {:data-fn io.github.abogoyavlensky.clojure-stack-lite/data-fn
  :template-fn io.github.abogoyavlensky.clojure-stack-lite/template-fn
+ :post-process-fn io.github.abogoyavlensky.clojure-stack-lite/post-process-fn
+ :debug false
  :transform
  [["src" "src/{{main/file}}"]
   ["test" "test/{{main/file}}"]]}
