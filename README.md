@@ -5,7 +5,7 @@ Built on a powerful yet lightweight stack featuring SQLite, HTMX, AlpineJS, and 
 
 This template is designed to be lightweight and easy to use, with a focus on rapid development and deployment. Minimal distraction and sane defaults. Everything is streamlined to give you a solid foundation for building modern web applications.
 
-Get started in seconds by building your new Clojure application and be productive!
+Get started building your new Clojure application in seconds and be productive!
 
 ## Usage
 
@@ -22,7 +22,7 @@ Get started in seconds by building your new Clojure application and be productiv
    neil new io.github.abogoyavlensky/clojure-stack-lite myproject
    ```
 
-2. Start development (_with [mise](https://mise.jdx.dev/getting-started.html)_):
+2. Start development (with [mise](https://mise.jdx.dev/getting-started.html)):
 
    ```shell
    cd myproject
