@@ -50,6 +50,8 @@ APP_DOMAIN=app.domain.com
 SESSION_SECRET_KEY=secret-key
 ```
 
+Add `ruby = "3.3.0"` to your local `.mise.toml` or to global `~/.mise.toml` file.
+
 Install ruby and kamal:
 
 ```shell
