@@ -50,7 +50,7 @@
      [:main {:class ["flex-grow" "flex" "items-center" "justify-center"]}
       [:div {:class ["container" "mx-auto" "px-4" "max-w-4xl" "text-center"]}
        [:h1 {:class ["text-6xl" "font-bold" "mb-6" "text-slate-900"]} "Welcome to "
-        [:span {:class ["bg-gradient-to-r" "from-emerald-400" "via-sky-400" "to-sky-200" "bg-clip-text" "text-transparent" "relative"]}
+        [:span {:class ["bg-gradient-to-r" "from-emerald-400" "to-sky-400" "bg-clip-text" "text-transparent" "relative"]}
          "Clojure Stack Lite"]]
        [:p {:class ["text-2xl" "mb-10" "text-slate-600"]} "A lightweight, modern template to jumpstart your Clojure project"]
        [:p {:class ["text-lg" "mb-12" "text-slate-500"]}
