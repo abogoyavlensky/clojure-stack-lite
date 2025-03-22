@@ -90,7 +90,6 @@ The template generates a Clojure project with the following structure:
 ├── .github/               # GitHub Actions workflows and configurations
 ├── .kamal/                # Kamal secrets template (only used if you use Kamal)
 ├── config/                # Kamal deployment configuration (only used if you use Kamal)
-├── db/                    # Database empty directory (only used if you use SQLite)
 ├── dev/                   # Development configuration directory
 │   └── user.clj           # User-specific development configuration
 ├── resources/             # Static resources and configuration files
