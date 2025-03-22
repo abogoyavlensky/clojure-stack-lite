@@ -1,5 +1,5 @@
 {:{{main/ns}}.db/db
- {:jdbc-url #profile {:default "jdbc:sqlite:db/{{main/ns}}.sqlite"
+ {:jdbc-url #profile {:default "jdbc:sqlite:{{main/ns}}.sqlite"
                       :test "jdbc:sqlite::memory:"}}
 
  :{{main/ns}}.server/server

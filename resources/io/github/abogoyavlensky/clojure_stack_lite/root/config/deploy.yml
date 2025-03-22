@@ -25,4 +25,6 @@ env:
     - SESSION_SECRET_KEY
 
 volumes:
-  - "/root/{{main/ns}}-db:/app/db"
+  - "/root/{{main/ns}}-db/{{main/ns}}.sqlite:/app/{{main/ns}}.sqlite"
+  - "/root/{{main/ns}}-db/{{main/ns}}.sqlite-shm:/app/{{main/ns}}.sqlite-shm"
+  - "/root/{{main/ns}}-db/{{main/ns}}.sqlite-wal:/app/{{main/ns}}.sqlite-wal"
