@@ -56,4 +56,7 @@
          :task (do
                  (run 'css-build)
                  (manifest/hash-assets!)
-                 (clojure "-T:build build"))}}}
+                 (clojure "-T:build build"))}
+  
+  kamal {:doc "Deploy application using Kamal"
+         :task (apply shell "kamal" (concat *command-line-args* ["--config-file" ".kamal/deploy.yml"]))}}}

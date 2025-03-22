@@ -20,6 +20,9 @@ jobs:
       - uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - uses: jdx/mise-action@v2
+        with:
+          install_args: "babashka"
 
       - name: Setup Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -42,8 +45,8 @@ jobs:
           REGISTRY_PASSWORD: ${{ github.token }}
           APP_DOMAIN: ${{ secrets.APP_DOMAIN }}
           SESSION_SECRET_KEY: ${{ secrets.SESSION_SECRET_KEY }}
-        run: kamal deploy --version=${{ github.sha }}
+        run: bb kamal deploy --version=${{ github.sha }}
 
       - name: Kamal Release
         if: ${{ cancelled() }}
-        run: kamal lock release
+        run: bb kamal lock release
