@@ -7,10 +7,10 @@
             [{{main/ns}}.test-utils :as test-utils]))
 
 (use-fixtures :once
-              (ig-extras/with-system "config.e2e.edn"))
+  (ig-extras/with-system "config.e2e.edn"))
 
 (use-fixtures :each
-              test-utils/with-truncated-tables)
+  test-utils/with-truncated-tables)
 
 (deftest test-home-page-loads-correctly
   (testing "Home page loads and displays correctly"
