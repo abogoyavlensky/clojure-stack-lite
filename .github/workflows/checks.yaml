@@ -21,3 +21,11 @@ jobs:
         run: |
           bb test
           bb new
+      
+      - name: Run tests in and outdated for generated project
+        run: |
+          cd tmpl-prj
+          mise trust && mise install
+          bb lint-init && bb lint
+          bb outdated-check
+          bb test
