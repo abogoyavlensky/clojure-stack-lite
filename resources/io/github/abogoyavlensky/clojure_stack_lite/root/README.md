@@ -10,12 +10,8 @@ _TODO: add project description_
 Install Java, Clojure, Babashka, TailwindCSS and other tools manually or via [mise](https://mise.jdx.dev/):
 
 ```shell
-mise trust
-mise install
+mise trust && mise install
 ```
-
-> [!NOTE]
-> This command will install Ruby to work with Kamal. You might need to install `libyaml` before running it: `brew install libyaml  # or on Ubuntu: sudo apt-get install libyaml-dev`
 
 Check all available commands:
 
@@ -32,7 +28,7 @@ bb check
 Run server with built-in REPL from terminal:
 
  ```shell
-bb repl 
+bb clj-repl 
 (reset)
 ````
 
@@ -50,7 +46,7 @@ APP_DOMAIN=app.domain.com
 SESSION_SECRET_KEY=secret-key
 ```
 
-Add `ruby = "3.3.0"` to your local `.mise.toml` or to global `~/.mise.toml` file.
+Add `ruby = "3.3.0"` to your local `.mise.toml` or to global `~/.mise/config.toml` file.
 
 Install ruby and kamal:
 
