@@ -54,9 +54,9 @@
          "Clojure Stack Lite"]]
        [:p {:class ["text-2xl" "mb-10" "text-slate-600"]} "A lightweight, modern template to jumpstart your Clojure project"]
        [:p {:class ["text-lg" "mb-12" "text-slate-500"]}
-        "To begin, modify the existing view in " [:code {:class ["bg-slate-100" "px-1" "rounded"]} "src/yourproject/views/home.clj"]
-        " or add a new route in " [:code {:class ["bg-slate-100" "px-1" "rounded"]} "src/yourproject/routes.clj"]
-        " and define a handler in " [:code {:class ["bg-slate-100" "px-1" "rounded"]} "src/yourproject/handlers.clj"]]
+        "To begin, modify the existing view in " [:code {:class ["bg-slate-100" "px-1" "rounded"]} "src/{{main/file}}/views/home.clj"]
+        " or add a new route in " [:code {:class ["bg-slate-100" "px-1" "rounded"]} "src/{{main/file}}/routes.clj"]
+        " and define a handler in " [:code {:class ["bg-slate-100" "px-1" "rounded"]} "src/{{main/file}}/handlers.clj"]]
        [:div {:class ["mb-16"]}
         [:a {:class ["bg-slate-900" "hover:bg-slate-800" "text-white" "font-medium" "py-3" "px-8" "rounded-lg" "transition-colors" "duration-200" "mr-4"]
              :href "https://stack.bogoyavlensky.com/docs/lite/tutorial"
