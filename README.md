@@ -45,7 +45,7 @@ Get started building your new Clojure application in seconds and be productive!
 - 📦 Lightweight and fast SQLite database
 - 🔄 Zero-downtime deployment via Kamal
 - ⚡ GitHub Actions CI/CD pipeline
-- 🧪 E2E and unit testing setup with coverage
+- 🧪 Unit testing setup with coverage
 - 🔍 Linting, formatting and deps version management
 - 📱 Basic PWA support out of the box (without service worker)
 - ⚙️ deps.edn and Babashka Tasks for efficient project management
@@ -96,7 +96,6 @@ The template generates a Clojure project with the following structure:
 │   ├── migrations/        # Database migration files
 │   ├── config.edn         # Main configuration file for the application
 │   ├── config.dev.edn     # Development-specific configuration
-│   ├── config.e2e.edn     # Test-specific configuration for end-to-end testing
 │   └── logback.xml        # Logging configuration file
 ├── src/                   # Source code directory
 │   └── {{name}}           # Main namespace directory
