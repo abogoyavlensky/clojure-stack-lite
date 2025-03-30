@@ -1,2 +1,0 @@
-#merge [#include "config.edn"
-        {:{{main/ns}}.test-utils/webdriver {:server #ig/ref :{{main/ns}}.server/server}}]
