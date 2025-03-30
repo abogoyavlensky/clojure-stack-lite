@@ -21,8 +21,9 @@
                  :body
                  (hickory/parse)
                  (hickory/as-hickory))]
-    (is (= "Movies Lite" (->> body
-                              (select/select (select/tag :span))
-                              (first)
-                              :content
-                              (first))))))
+    (is (= "Clojure Stack Lite" 
+           (->> body
+                (select/select (select/tag :span))
+                (first)
+                :content
+                (first))))))
