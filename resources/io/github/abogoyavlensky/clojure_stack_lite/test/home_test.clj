@@ -1,7 +1,7 @@
 (ns {{main/ns}}.home-test
-  (:require [clojure.test :refer :all]
+  (:require [clj-http.client :as http]
+            [clojure.test :refer :all]
             [integrant-extras.tests :as ig-extras]
-            [hato.client :as hato]
             [hickory.core :as hickory]
             [hickory.select :as select]
             [reitit-extras.tests :as reitit-extras]
@@ -17,7 +17,7 @@
 (deftest test-home-page-is-loaded-correctly
   (let [server (::server/server ig-extras/*test-system*)
         url (reitit-extras/get-server-url server :host)
-        body (-> (hato/get url)
+        body (-> (http/get url)
                  :body
                  (hickory/parse)
                  (hickory/as-hickory))]
