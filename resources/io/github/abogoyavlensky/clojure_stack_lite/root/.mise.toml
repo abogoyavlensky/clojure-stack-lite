@@ -4,7 +4,7 @@ clojure = "1.12.0.1479"
 babashka = "1.12.194"
 clj-kondo = "2024.09.27"
 cljfmt = "0.13.0"
-tailwindcss = "4.0.14"
+tailwindcss = "4.1.1"
 
 [alias]
 cljfmt = "asdf:https://github.com/b-social/asdf-cljfmt"
