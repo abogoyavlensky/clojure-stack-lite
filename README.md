@@ -88,7 +88,8 @@ The template generates a Clojure project with the following structure:
 ```
 ├── .clj-kondo/            # Clojure linting configuration
 ├── .github/               # GitHub Actions workflows and configurations
-├── .kamal/                # Kamal deployment configuration (only used if you use Kamal)
+├── .kamal/                # Kamal deployment configuration (only used with Kamal)
+├── db/                    # Empty database directory for database files in production (only used with SQLite)
 ├── dev/                   # Development configuration directory
 │   └── user.clj           # User-specific development configuration
 ├── resources/             # Static resources and configuration files
