@@ -18,9 +18,11 @@ registry:
   password:
     - REGISTRY_PASSWORD
 
-# Configure builder setup.
 builder:
   arch: amd64
+  remote: ssh://root@<%= ENV['SERVER_IP'] %>
+  cache:
+    type: gha
 
 env:
   secret:
