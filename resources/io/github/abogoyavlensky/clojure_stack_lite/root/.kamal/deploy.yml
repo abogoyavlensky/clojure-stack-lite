@@ -10,7 +10,6 @@ proxy:
   host: <%= ENV['APP_DOMAIN'] %>
   healthcheck:
     path: /health
-    timeout: 60
 
 registry:
   server: ghcr.io
