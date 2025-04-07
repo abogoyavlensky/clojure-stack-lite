@@ -37,7 +37,7 @@
 
 (defmethod ig/init-key ::db
   [_ options]
-  (log/info (str "[DB] Starting database connection pool..."))
+  (log/info "[DB] Starting database connection pool...")
   (let [datasource (cp/make-datasource options)]
     (ragtime-repl/migrate
       {:datastore (ragtime-jdbc/sql-database datasource)
@@ -46,5 +46,5 @@
 
 (defmethod ig/halt-key! ::db
   [_ datasource]
-  (log/info (str "[DB] Closing database connection pool..."))
+  (log/info "[DB] Closing database connection pool...")
   (cp/close-datasource datasource))

@@ -28,7 +28,7 @@
 (defmethod ig/init-key ::server
   [_ {:keys [options]
       :as context}]
-  (log/info (str "[SERVER] Starting server..."))
+  (log/info "[SERVER] Starting server...")
   (-> {:routes app-routes/routes
        :default-handlers {:not-found (handlers/default-handler "Page not found" 404)
                           :method-not-allowed (handlers/default-handler "Method not allowed" 405)
@@ -39,5 +39,5 @@
 
 (defmethod ig/halt-key! ::server
   [_ server]
-  (log/info (str "[SERVER] Stopping server..."))
+  (log/info "[SERVER] Stopping server...")
   (.stop server))
