@@ -41,14 +41,14 @@ Get started building your new Clojure application in seconds and be productive!
 ## Features
 
 - 🏗️ Robust Clojure stack powered by Integrant and Reitit/Ring
-- 🎨 Frontend using HTMX, AlpineJS and TailwindCSS v4
+- 🎨 Lightweight frontend using HTMX, AlpineJS and TailwindCSS v4
 - 📦 Lightweight and fast SQLite database
 - 🔄 Zero-downtime deployment via Kamal
 - ⚡ GitHub Actions CI/CD pipeline
 - 🧪 Integration and unit testing setup with coverage
 - 🔍 Linting, formatting and deps version management
-- 📱 Basic PWA support out of the box (without service worker)
 - ⚙️ deps.edn and Babashka Tasks for efficient project management
+- 📱 Basic PWA support out of the box (without service worker)
 
 ## Stack
 
