@@ -41,8 +41,8 @@ jobs:
       - name: Build and deploy
         env:
           SERVER_IP: ${{ secrets.SERVER_IP }}
-          REGISTRY_USERNAME: ${{ github.repository_owner }}
-          REGISTRY_PASSWORD: ${{ github.token }}
+          REGISTRY_USERNAME: ${{ github.actor }}
+          REGISTRY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
           APP_DOMAIN: ${{ secrets.APP_DOMAIN }}
           SESSION_SECRET_KEY: ${{ secrets.SESSION_SECRET_KEY }}
         run: bb kamal deploy --version=${{ github.sha }}
