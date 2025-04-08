@@ -129,6 +129,14 @@ The template generates a Clojure project with the following structure:
 - [ ] Websocket support
 - [ ] Tutorials on common app parts (register/auth, background jobs, etc.)
 
+## Links
+
+- [Integrant + Aero](https://lambdaisland.com/blog/2019-12-11-advent-of-parens-11-integrant-in-practice)
+- [Start TailwindCSS as part of the app system](https://shagunagrawal.me/posts/multiplayer-board-game-in-clojure/#repl)
+- [Clojure + Kamal](https://bogoyavlensky.com/blog/deploying-full-stack-clojure-app-with-kamal/)
+- [Auto-reloading Reitit](https://bogoyavlensky.com/blog/auto-reloading-ring/)
+- [CI with Kamal](https://igor.works/blog/evolution-of-github-action-for-kamal)
+
 ## Template Development
 
 ### Requirements
