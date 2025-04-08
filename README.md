@@ -133,8 +133,9 @@ The template generates a Clojure project with the following structure:
 
 - [Integrant + Aero](https://lambdaisland.com/blog/2019-12-11-advent-of-parens-11-integrant-in-practice)
 - [Start TailwindCSS as part of the app system](https://shagunagrawal.me/posts/multiplayer-board-game-in-clojure/#repl)
+- [Auto-reloading Ring/Reitit](https://bogoyavlensky.com/blog/auto-reloading-ring/)
+- [Sessions with Ring/Reitit](https://github.com/metosin/reitit/issues/205)
 - [Clojure + Kamal](https://bogoyavlensky.com/blog/deploying-full-stack-clojure-app-with-kamal/)
-- [Auto-reloading Reitit](https://bogoyavlensky.com/blog/auto-reloading-ring/)
 - [CI with Kamal](https://igor.works/blog/evolution-of-github-action-for-kamal)
 
 ## Template Development
