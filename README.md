@@ -123,8 +123,9 @@ The template generates a Clojure project with the following structure:
 ## Roadmap
 
 - [ ] DaisyUI support
-- [ ] More database support (Postgres, Datalevin)
 - [ ] More deployment options (Fly.io, Railway, etc.)
+- [ ] More database support (Postgres, Datalevin)
+- [ ] More frontend tool options (TwinSpark, Datastar)
 - [ ] Queue support (SQLite, Redis, etc.)
 - [ ] Websocket support
 - [ ] Tutorials on common app parts (register/auth, background jobs, etc.)
