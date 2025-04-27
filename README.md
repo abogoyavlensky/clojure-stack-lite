@@ -69,6 +69,7 @@ Get started building your new Clojure application in seconds and be productive!
 - **HTMX 2**: HTML extensions for AJAX without writing JavaScript
 - **AlpineJS 3**: Lightweight JavaScript framework for adding behavior
 - **TailwindCSS 4**: Utility-first CSS framework
+- [OPTIONAL] **DaisyUI**: A UI Component library (Add `:daisyui true` while generating template)
 
 ### Development
 - **Babashka**: Project management with tasks
