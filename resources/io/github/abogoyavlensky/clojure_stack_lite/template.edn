@@ -2,6 +2,8 @@
  :template-fn io.github.abogoyavlensky.clojure-stack-lite/template-fn
  :post-process-fn io.github.abogoyavlensky.clojure-stack-lite/post-process-fn
  :debug false
+ :daisyui false
  :transform
  [["src" "src/{{main/file}}"]
-  ["test" "test/{{main/file}}"]]}
+  ["test" "test/{{main/file}}"]
+  ["resources_public_css_default" "resources/public/css"]]}
