@@ -40,7 +40,10 @@
   {:daisyui {"resources_public_css_default" "resources_public_css_daisyui"}})
 
 (def EXTENSIONS
-  {:daisyui [["resources_public_js_daisyui" "resources/public/js"]]})
+  {:daisyui [["resources_public_js_daisyui" "resources/public/js"]]
+   :sqlite [["db_sqlite" "db"]
+            ["resources_migrations_sqlite" "resources/migrations"]]
+   :postgres [["resources_migrations_postgres" "resources/migrations"]]})
 
 (defn- apply-transform-source-dir
   [suffix transform]
@@ -64,9 +67,17 @@
   (when (true? (:debug data))
     (println "template-fn has got data:")
     (prn data)
-    (println "template-fn returning edn:")
+    (println "template-fn given edn:")
     (prn edn))
 
-  (let [new-transform (cond->> (:transform edn)
-                        (:daisyui data) (apply-transform-source-dir :daisyui))]
-    (assoc edn :transform new-transform)))
+  ; TODO: add validation of options!
+
+  (let [db (:db data (:db edn))
+        new-transform (cond->> (:transform edn)
+                        (:daisyui data) (apply-transform-source-dir :daisyui)
+                        db (apply-transform-source-dir db))
+        result (assoc edn :transform new-transform)]
+    (when (true? (:debug data))
+      (println "template-fn returning edn:")
+      (prn result))
+    result))
