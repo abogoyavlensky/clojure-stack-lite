@@ -140,14 +140,13 @@ clojure -Tnew create :template io.github.abogoyavlensky/clojure-stack-lite :name
 
 - [x] DaisyUI support
 - [ ] PostgreSQL support
-- [ ] More deployment options (Fly.io, Railway)
-- [ ] Tutorials on common app parts:
-  - [ ] Register/Auth
-  - [ ] Background jobs
+- [ ] Fly.io as a deployment option
+- [ ] Register/Auth flow
 - [ ] Sentry support
-- [ ] Queue support (SQLite, Redis, etc.)
-- [ ] Websocket support
 - [ ] More frontend tool options (TwinSpark, Datastar)
+- [ ] Railway as a deployment option
+- [ ] Queue support
+- [ ] Websocket support
 
 ## Links
 
