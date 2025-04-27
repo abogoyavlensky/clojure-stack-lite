@@ -120,6 +120,21 @@ The template generates a Clojure project with the following structure:
 └── README.md              # Project documentation
 ```
 
+## Options
+
+The template offers customization options for generating your project:
+
+- `:daisyui` - Include [DaisyUI](https://daisyui.com/), a component library for
+  TailwindCSS (*Default: `false`*)
+
+Possible values: `false | true`
+
+Usage example:
+
+```shell
+clojure -Tnew create :template io.github.abogoyavlensky/clojure-stack-lite :name myproject :daisyui true
+```
+
 ## Roadmap
 
 - [x] DaisyUI support
