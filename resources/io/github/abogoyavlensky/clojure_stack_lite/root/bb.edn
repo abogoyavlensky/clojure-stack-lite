@@ -8,8 +8,7 @@
   deps {:doc "Install all dev deps"
         :task (clojure "-P -X:dev:test:outdated")}
 
-  clj-repl {:doc "Run built-in Clojure REPL"
-            :task (shell "clj -A:dev:test")}
+  clj-repl {{clj-repl-cmd}}
 
   fmt-check {:doc "Check code formatting"
              :task (shell "cljfmt" "check")}

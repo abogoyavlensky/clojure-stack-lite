@@ -5,7 +5,9 @@
   "io/github/abogoyavlensky/clojure_stack_lite/substitutions/")
 
 (def SUBSTITUTIONS-MAPPING
-  {:daisyui {:fetch-assets-urls "bb_edn_daisyui.edn"}})
+  {:daisyui {:fetch-assets-urls "bb_edn_daisyui.edn"}
+   :sqlite {:clj-repl-cmd "bb_edn_clj_repl_cmd_sqlite.edn"}
+   :postgres {:clj-repl-cmd "bb_edn_clj_repl_cmd_postgres.edn"}})
 
 (defn- get-file-content
   [file-name]
@@ -25,8 +27,11 @@
   Result is merged onto existing options data.
   Returning nil means no changes to options data."
   [data]
-  (cond-> {:fetch-assets-urls ""}
-    (:daisyui data) (merge (replace-vars (:daisyui SUBSTITUTIONS-MAPPING)))))
+  (let [db (:db data :sqlite)]
+    (cond-> {:fetch-assets-urls ""
+             :clj-repl-cmd ""}
+      (:daisyui data) (merge (replace-vars (:daisyui SUBSTITUTIONS-MAPPING)))
+      db (merge (replace-vars (get SUBSTITUTIONS-MAPPING db))))))
 
 (defn post-process-fn
   "Example post-process-fn handler.
