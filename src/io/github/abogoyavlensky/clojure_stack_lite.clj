@@ -1,11 +1,32 @@
-(ns io.github.abogoyavlensky.clojure-stack-lite)
+(ns io.github.abogoyavlensky.clojure-stack-lite
+  (:require [clojure.java.io :as io]))
+
+(def SUBSTITUTIONS-BASE-DIR
+  "io/github/abogoyavlensky/clojure_stack_lite/substitutions/")
+
+(def SUBSTITUTIONS-MAPPING
+  {:daisyui {:fetch-assets-urls "bb_edn_daisyui.edn"}})
+
+(defn- get-file-content
+  [file-name]
+  (slurp (io/resource (str SUBSTITUTIONS-BASE-DIR file-name))))
+
+(defn- replace-vars
+  [mapping]
+  (reduce-kv
+    (fn [acc k v]
+      (assoc acc k (get-file-content v)))
+   {}
+   mapping))
 
 (defn data-fn
   "Example data-fn handler.
 
   Result is merged onto existing options data.
   Returning nil means no changes to options data."
-  [_data])
+  [data]
+  (cond-> {:fetch-assets-urls ""}
+    (:daisyui data) (merge (replace-vars (:daisyui SUBSTITUTIONS-MAPPING)))))
 
 (defn post-process-fn
   "Example post-process-fn handler.

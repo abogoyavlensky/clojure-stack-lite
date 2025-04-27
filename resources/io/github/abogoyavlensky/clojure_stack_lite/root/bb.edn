@@ -49,7 +49,7 @@
                         [{:url "https://unpkg.com/htmx.org@2.0.4/dist/htmx.min.js"
                           :filepath "js/htmx.min.js"}
                          {:url "https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"
-                          :filepath "js/alpinejs.min.js"}])}
+                          :filepath "js/alpinejs.min.js"}{{fetch-assets-urls}}])}
 
   build {:doc "Build application uberjar"
          :requires ([manifest-edn.core :as manifest])

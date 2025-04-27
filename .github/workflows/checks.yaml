@@ -32,7 +32,9 @@ jobs:
       - name: Generate project - daisyui
         run: |
           rm -rf tmpl-prj
-          bb new
+          bb new :daisyui true
           cd tmpl-prj
           mise trust && mise install
+          bb css-build
+          bb fetch-assets
           bb css-build
