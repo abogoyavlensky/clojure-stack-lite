@@ -5,7 +5,7 @@
         :task (clojure "-X:test")}
 
   new {:doc "Create a new project"
-       :task (clojure "-X:local-new :name tmpl-prj :overwrite :delete")}
+       :task (apply clojure "-X:local-new :name tmpl-prj :overwrite :delete :debug true" *command-line-args*)}
 
   release {:doc "Create and push a new git tag based on provided version"
            :task (clojure "-T:slim tag :push true")}}}

@@ -18,14 +18,23 @@ jobs:
         with:
           install_args: "babashka java clojure"
       - name: Run tests
+        run: bb test
+
+      - name: Generate project - default
         run: |
-          bb test
           bb new
-      
-      - name: Run tests in and outdated for generated project
-        run: |
           cd tmpl-prj
           mise trust && mise install
           bb lint-init && bb lint
           bb outdated-check
           bb test
+
+      - name: Generate project - daisyui
+        run: |
+          rm -rf tmpl-prj
+          bb new :daisyui true
+          cd tmpl-prj
+          mise trust && mise install
+          bb css-build
+          bb fetch-assets
+          bb css-build
