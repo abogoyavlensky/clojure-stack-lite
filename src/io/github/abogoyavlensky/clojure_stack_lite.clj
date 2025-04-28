@@ -63,7 +63,8 @@
   {:daisyui [["resources_public_js_daisyui" "resources/public/js"]]
    :sqlite [["db_sqlite" "db"]
             ["resources_migrations_sqlite" "resources/migrations"]]
-   :postgres [["resources_migrations_postgres" "resources/migrations"]]})
+   :postgres [["resources_migrations_postgres" "resources/migrations"]
+              ["docker-compose-postgres" ""]]})
 
 (defn- apply-transform-source-dir
   [suffix transform]
