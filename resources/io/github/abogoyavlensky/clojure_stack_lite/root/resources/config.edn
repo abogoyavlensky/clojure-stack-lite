@@ -1,6 +1,5 @@
 {:{{main/ns}}.db/db
- {:jdbc-url #profile {:default "jdbc:sqlite:db/{{main/ns}}.sqlite"
-                      :test "jdbc:sqlite::memory:"}}
+ {:jdbc-url #profile {{db-config}}}
 
  :{{main/ns}}.server/server
  {:options {:port #profile {:default 8000

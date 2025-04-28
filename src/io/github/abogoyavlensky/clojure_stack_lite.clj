@@ -6,8 +6,10 @@
 
 (def SUBSTITUTIONS-MAPPING
   {:daisyui {:fetch-assets-urls "bb_edn_daisyui.edn"}
-   :sqlite {:clj-repl-cmd "bb_edn_clj_repl_cmd_sqlite.edn"}
-   :postgres {:clj-repl-cmd "bb_edn_clj_repl_cmd_postgres.edn"}})
+   :sqlite {:clj-repl-cmd "bb_edn_clj_repl_cmd_sqlite.edn"
+            :db-config "resources_config_edn_sqlite.edn"}
+   :postgres {:clj-repl-cmd "bb_edn_clj_repl_cmd_postgres.edn"
+              :db-config "resources_config_edn_postgres.edn"}})
 
 (defn- get-file-content
   [file-name]
