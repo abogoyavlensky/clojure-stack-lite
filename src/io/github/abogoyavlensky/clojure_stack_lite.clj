@@ -9,7 +9,8 @@
    :sqlite {:clj-repl-cmd "bb_edn_clj_repl_cmd_sqlite.edn"
             :db-config "resources_config_edn_sqlite.edn"}
    :postgres {:clj-repl-cmd "bb_edn_clj_repl_cmd_postgres.edn"
-              :db-config "resources_config_edn_postgres.edn"}})
+              :db-config "resources_config_edn_postgres.edn"
+              :sql-result-set-config "src_db_sql_result_set_config_postgres.edn"}})
 
 (defn- get-file-content
   [file-name]
@@ -31,7 +32,9 @@
   [data]
   (let [db (:db data :sqlite)]
     (cond-> {:fetch-assets-urls ""
-             :clj-repl-cmd ""}
+             :clj-repl-cmd ""
+             :db-config ""
+             :sql-result-set-config ""}
       (:daisyui data) (merge (replace-vars (:daisyui SUBSTITUTIONS-MAPPING)))
       db (merge (replace-vars (get SUBSTITUTIONS-MAPPING db))))))
 
