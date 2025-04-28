@@ -7,11 +7,13 @@
 (def SUBSTITUTIONS-MAPPING
   {:daisyui {:fetch-assets-urls "bb_edn_daisyui.edn"}
    :sqlite {:clj-repl-cmd "bb_edn_clj_repl_cmd_sqlite.edn"
-            :db-config "resources_config_edn_sqlite.edn"}
+            :db-config "resources_config_edn_sqlite.edn"
+            :deploy-config-kamal "kamal-deploy-config-sqlite.txt"}
    :postgres {:clj-repl-cmd "bb_edn_clj_repl_cmd_postgres.edn"
               :db-config "resources_config_edn_postgres.edn"
               :sql-result-set-config "src_db_sql_result_set_config_postgres.edn"
-              :ci-deploy-env-vars "github_workflows_deploy_ci_deploy_env_vars_postgres.txt"}})
+              :ci-deploy-env-vars "github_workflows_deploy_ci_deploy_env_vars_postgres.txt"
+              :deploy-config-kamal "kamal-deploy-config-postgres.txt"}})
 
 (defn- get-file-content
   [file-name]
