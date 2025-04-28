@@ -4,6 +4,10 @@
 (def SUBSTITUTIONS-BASE-DIR
   "io/github/abogoyavlensky/clojure_stack_lite/substitutions/")
 
+(def DB-TYPES
+  #{:sqlite :postgres})
+
+
 (def SUBSTITUTIONS-MAPPING
   {:daisyui {:fetch-assets-urls "bb_edn_daisyui.edn"}
    :sqlite {:clj-repl-cmd "bb_edn_clj_repl_cmd_sqlite.edn"
@@ -39,8 +43,13 @@
   Result is merged onto existing options data.
   Returning nil means no changes to options data."
   [data]
-  (let [db (:db data :sqlite)]
-    (cond-> {:fetch-assets-urls ""
+  (let [db (keyword (:db data :sqlite))]
+
+    (when-not (contains? DB-TYPES db)
+      (throw (Exception. "Invalid db type. Supported types are: :sqlite, :postgres")))
+
+    (cond-> {:db db
+             :fetch-assets-urls ""
              :clj-repl-cmd ""
              :db-config ""
              :sql-result-set-config ""
@@ -94,8 +103,6 @@
     (prn data)
     (println "template-fn given edn:")
     (prn edn))
-
-  ; TODO: add validation of options!
 
   (let [db (:db data (:db edn))
         new-transform (cond->> (:transform edn)
