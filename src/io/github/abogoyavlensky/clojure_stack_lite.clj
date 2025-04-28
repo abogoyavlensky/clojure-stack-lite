@@ -15,6 +15,7 @@
               :sql-result-set-config "src_db_sql_result_set_config_postgres.edn"
               :ci-deploy-env-vars "github_workflows_deploy_ci_deploy_env_vars_postgres.txt"
               :deploy-config-kamal "kamal-deploy-config-postgres.txt"
+              :deploy-secrets-kamal "kamal-deploy-secrets-postgres.txt"
               :db-driver-deps "deps_edn_db_driver_deps_postgres.edn"
               :db-test-deps "deps_edn_db_test_deps_postgres.edn"}})
 
@@ -43,6 +44,7 @@
              :sql-result-set-config ""
              :ci-deploy-env-vars ""
              :deploy-config-kamal ""
+             :deploy-secrets-kamal ""
              :db-driver-deps ""
              :db-test-deps ""}
       (:daisyui data) (merge (replace-vars (:daisyui SUBSTITUTIONS-MAPPING)))
