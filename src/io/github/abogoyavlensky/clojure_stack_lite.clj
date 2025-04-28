@@ -9,7 +9,8 @@
    :sqlite {:clj-repl-cmd "bb_edn_clj_repl_cmd_sqlite.edn"
             :db-config "resources_config_edn_sqlite.edn"
             :deploy-config-kamal "kamal-deploy-config-sqlite.txt"
-            :db-driver-deps "deps_edn_db_driver_deps_sqlite.edn"}
+            :db-driver-deps "deps_edn_db_driver_deps_sqlite.edn"
+            :test-utils-db-setup "test_utils_db_setup_sqlite.clj"}
    :postgres {:clj-repl-cmd "bb_edn_clj_repl_cmd_postgres.edn"
               :db-config "resources_config_edn_postgres.edn"
               :sql-result-set-config "src_db_sql_result_set_config_postgres.edn"
@@ -17,7 +18,8 @@
               :deploy-config-kamal "kamal-deploy-config-postgres.txt"
               :deploy-secrets-kamal "kamal-deploy-secrets-postgres.txt"
               :db-driver-deps "deps_edn_db_driver_deps_postgres.edn"
-              :db-test-deps "deps_edn_db_test_deps_postgres.edn"}})
+              :db-test-deps "deps_edn_db_test_deps_postgres.edn"
+              :test-utils-db-setup "test_utils_db_setup_postgres.clj"}})
 
 (defn- get-file-content
   [file-name]
