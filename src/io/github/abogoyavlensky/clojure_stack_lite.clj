@@ -10,7 +10,8 @@
             :db-config "resources_config_edn_sqlite.edn"}
    :postgres {:clj-repl-cmd "bb_edn_clj_repl_cmd_postgres.edn"
               :db-config "resources_config_edn_postgres.edn"
-              :sql-result-set-config "src_db_sql_result_set_config_postgres.edn"}})
+              :sql-result-set-config "src_db_sql_result_set_config_postgres.edn"
+              :ci-deploy-env-vars "github_workflows_deploy_ci_deploy_env_vars_postgres.txt"}})
 
 (defn- get-file-content
   [file-name]
@@ -34,7 +35,8 @@
     (cond-> {:fetch-assets-urls ""
              :clj-repl-cmd ""
              :db-config ""
-             :sql-result-set-config ""}
+             :sql-result-set-config ""
+             :ci-deploy-env-vars ""}
       (:daisyui data) (merge (replace-vars (:daisyui SUBSTITUTIONS-MAPPING)))
       db (merge (replace-vars (get SUBSTITUTIONS-MAPPING db))))))
 

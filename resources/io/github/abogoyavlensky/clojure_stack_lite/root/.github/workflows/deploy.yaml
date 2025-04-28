@@ -44,7 +44,7 @@ jobs:
           REGISTRY_USERNAME: ${{ github.actor }}
           REGISTRY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
           APP_DOMAIN: ${{ secrets.APP_DOMAIN }}
-          SESSION_SECRET_KEY: ${{ secrets.SESSION_SECRET_KEY }}
+          SESSION_SECRET_KEY: ${{ secrets.SESSION_SECRET_KEY }}{{ci-deploy-env-vars}}
         run: bb kamal deploy --version=${{ github.sha }}
 
       - name: Kamal Release
