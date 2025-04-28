@@ -27,6 +27,9 @@ bb check
 
 Run server with built-in REPL from terminal:
 
+> [!NOTE]
+> If you're using PostgreSQL, [Docker](https://docs.docker.com/engine/install/) should be installed
+
  ```shell
 bb clj-repl 
 (reset)
