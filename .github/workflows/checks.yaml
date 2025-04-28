@@ -38,3 +38,12 @@ jobs:
           bb css-build
           bb fetch-assets
           bb css-build
+
+      - name: Generate project - postgres
+        run: |
+          bb new :db :postgres
+          cd tmpl-prj
+          mise trust && mise install
+          bb lint-init && bb lint
+          bb outdated-check
+          bb test
