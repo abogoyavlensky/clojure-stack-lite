@@ -1,0 +1,2 @@
+{:default "jdbc:sqlite:db/{{main/ns}}.sqlite"
+                      :test "jdbc:sqlite::memory:"}

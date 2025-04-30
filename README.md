@@ -41,8 +41,9 @@ Get started building your new Clojure application in seconds and be productive!
 ## Features
 
 - 🏗️ Robust Clojure stack powered by Integrant and Reitit/Ring
-- 🎨 Lightweight frontend using HTMX, AlpineJS and TailwindCSS v4
-- 📦 Lightweight and fast SQLite database
+- 🎨 Lightweight frontend using HTMX, AlpineJS and TailwindCSS v4 (with optional DaisyUI
+  components)
+- 📦 SQLite/PostgreSQL database (you choose)
 - 🔄 Zero-downtime deployment via Kamal
 - ⚡ GitHub Actions CI/CD pipeline
 - 🧪 Integration and unit testing setup with coverage
@@ -60,7 +61,8 @@ Get started building your new Clojure application in seconds and be productive!
 - **Malli**: Data validation and specification
 
 ### Database
-- **SQLite**: Lightweight, file-based database
+
+- **SQLite/PostgreSQL**: Choose between file-based SQLite or enterprise-grade PostgreSQL
 - **next.jdbc**: JDBC-based database access
 - **HoneySQL**: SQL as Clojure data structures
 - **Ragtime**: Database migrations
@@ -117,6 +119,7 @@ The template generates a Clojure project with the following structure:
 ├── bb.edn                 # Babashka tasks configuration for managing application
 ├── deps.edn               # Clojure dependencies and aliases
 ├── Dockerfile             # Dockerfile for building the application image
+├── docker-compose.yaml    # Run PostgreSQL database for local development (only used with PostgreSQL)
 ├── LICENSE                # License file, AGPLv3 by default, for motivation check: https://plausible.io/blog/open-source-licenses
 └── README.md              # Project documentation
 ```
@@ -139,15 +142,14 @@ clojure -Tnew create :template io.github.abogoyavlensky/clojure-stack-lite :name
 ## Roadmap
 
 - [x] DaisyUI support
-- [ ] PostgreSQL support
-- [ ] More deployment options (Fly.io, Railway)
-- [ ] Tutorials on common app parts:
-  - [ ] Register/Auth
-  - [ ] Background jobs
+- [x] PostgreSQL support
+- [ ] Fly.io as a deployment option
+- [ ] Register/Auth flow
 - [ ] Sentry support
-- [ ] Queue support (SQLite, Redis, etc.)
-- [ ] Websocket support
 - [ ] More frontend tool options (TwinSpark, Datastar)
+- [ ] Railway as a deployment option
+- [ ] Queue support
+- [ ] Websocket support
 
 ## Links
 

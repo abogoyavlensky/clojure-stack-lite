@@ -1,0 +1,2 @@
+{:doc "Run built-in Clojure REPL"
+            :task (shell "clj -A:dev:test")}

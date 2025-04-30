@@ -9,22 +9,7 @@
 (def ^:const CSRF-TOKEN-KEY :__anti-forgery-token)
 (def ^:const CSRF-TOKEN-HEADER "x-csrf-token")
 
-(defn- all-tables
-  [db]
-  (->> {:select [:name]
-        :from [:sqlite_master]
-        :where [:= :type "table"]}
-       (db/exec! db)
-       (map (comp keyword :name))))
-
-(defn with-truncated-tables
-  "Remove all data from all tables."
-  [f]
-  (let [db (::db/db ig-extras/*test-system*)]
-    (doseq [table (all-tables db)
-            :when (not= :schema_version table)]
-      (db/exec! db {:delete-from table}))
-    (f)))
+{{test-utils-db-setup}}
 
 (defn get-csrf-token-and-cookies
   "Return CSRF token and cookies for given page to be used in POST request."

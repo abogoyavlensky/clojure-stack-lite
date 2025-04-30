@@ -27,6 +27,4 @@ builder:
 env:
   secret:
     - SESSION_SECRET_KEY
-
-volumes:
-  - "/root/{{main/ns}}-db:/app/db"
+{{deploy-config-kamal}}

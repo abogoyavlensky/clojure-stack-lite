@@ -1,0 +1,14 @@
+    - DATABASE_URL
+
+# Database
+accessories:
+  db:
+    image: postgres:17.4-alpine3.21
+    host: <%= ENV['SERVER_IP'] %>
+    env:
+      secret:
+        - POSTGRES_DB
+        - POSTGRES_USER
+        - POSTGRES_PASSWORD
+    directories:
+      - {{main/file}}_postgres_data:/var/lib/postgresql/data

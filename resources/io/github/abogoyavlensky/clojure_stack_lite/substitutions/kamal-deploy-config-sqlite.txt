@@ -1,0 +1,3 @@
+
+volumes:
+  - "/root/{{main/ns}}-db:/app/db"

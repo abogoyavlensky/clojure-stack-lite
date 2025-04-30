@@ -1,0 +1,3 @@
+{:default #env DATABASE_URL
+                      :dev "jdbc:postgresql://localhost:5432/localdb?user=test&password=test"
+                      :test "jdbc:tc:postgresql:15.2-alpine3.17:///testdb?TC_DAEMON=true"}
