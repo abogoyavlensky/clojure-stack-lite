@@ -43,7 +43,7 @@ Get started building your new Clojure application in seconds and be productive!
 - 🏗️ Robust Clojure stack powered by Integrant and Reitit/Ring
 - 🎨 Lightweight frontend using HTMX, AlpineJS and TailwindCSS v4 (with optional DaisyUI
   components)
-- 📦 Lightweight and fast SQLite/PostgreSQL database (You choose)
+- 📦 SQLite/PostgreSQL database (you choose)
 - 🔄 Zero-downtime deployment via Kamal
 - ⚡ GitHub Actions CI/CD pipeline
 - 🧪 Integration and unit testing setup with coverage
