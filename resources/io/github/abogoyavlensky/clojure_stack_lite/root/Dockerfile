@@ -2,15 +2,16 @@ FROM clojure:temurin-21-tools-deps-1.12.0.1479-alpine AS build
 
 WORKDIR /app
 
-# Install bb
-RUN apk --no-cache add curl \
-  && curl -sLO https://raw.githubusercontent.com/babashka/babashka/master/install \
-  && chmod +x install \
-  && ./install --version 1.12.197 --static
+ARG BB_VERSION=1.12.197
+ARG TAILWIND_VERSION=v4.1.3
 
 # Install tailwindcss
-RUN curl -sL -o /usr/local/bin/tailwindcss https://github.com/tailwindlabs/tailwindcss/releases/download/v4.1.3/tailwindcss-linux-x64-musl \
-  && chmod +x /usr/local/bin/tailwindcss
+RUN wget -qO /usr/local/bin/tailwindcss "https://github.com/tailwindlabs/tailwindcss/releases/download/${TAILWIND_VERSION}/tailwindcss-linux-x64-musl" \
+    && chmod +x /usr/local/bin/tailwindcss
+
+# Install bb
+RUN wget -qO- https://raw.githubusercontent.com/babashka/babashka/master/install \
+    | bash -s -- --version "${BB_VERSION}" --static
 
 # bb: (trigger) install of Clojure tools and download deps
 COPY bb.edn /app
