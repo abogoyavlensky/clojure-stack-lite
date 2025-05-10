@@ -35,6 +35,7 @@
                           :not-acceptable (handlers/default-handler "Not acceptable" 406)}}
       (reitit-extras/get-handler-ssr context)
       (jetty/run-jetty {:port (:port options)
+                        :host "0.0.0.0"
                         :join? false})))
 
 (defmethod ig/halt-key! ::server
