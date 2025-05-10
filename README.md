@@ -1,7 +1,7 @@
 # Clojure Stack Lite
 
 A quick way to start a full-stack Clojure app with server-side rendering. 
-Built on a powerful yet lightweight stack featuring SQLite, HTMX, AlpineJS, and TailwindCSS v4.
+Built on a powerful yet lightweight stack featuring SQLite/PostgreSQL, HTMX, AlpineJS, and TailwindCSS v4.
 
 This template is designed to be lightweight and easy to use, with a focus on rapid development and deployment. Minimal distraction and sane defaults. Everything is streamlined to give you a solid foundation for building modern web applications.
 
