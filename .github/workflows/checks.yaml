@@ -47,3 +47,11 @@ jobs:
           bb lint-init && bb lint
           bb outdated-check
           bb test
+
+      - name: Generate project - no deployment
+        run: |
+          bb new :deploy :none
+          cd tmpl-prj
+          mise trust && mise install
+          bb lint-init && bb lint
+          bb test

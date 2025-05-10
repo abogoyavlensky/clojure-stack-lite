@@ -48,10 +48,4 @@ Once you want to update the version of AlpineJS, HTMX or add a new asset, edit v
 bb fetch-assets
 ```
 
-Your assets will be updated in `resources/public` folder.
-
-## Deployment
-
-For detailed deployment instructions, refer to the documentation:
-
-- [Kamal](https://stack.bogoyavlensky.com/docs/lite/kamal)
+Your assets will be updated in `resources/public` folder.{{readme-deploy-kamal}}

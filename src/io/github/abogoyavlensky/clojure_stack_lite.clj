@@ -4,9 +4,8 @@
 (def SUBSTITUTIONS-BASE-DIR
   "io/github/abogoyavlensky/clojure_stack_lite/substitutions/")
 
-(def DB-TYPES
-  #{:sqlite :postgres})
-
+(def DB-TYPES #{:sqlite :postgres})
+(def DEPLOY-TYPES #{:kamal :none})
 
 (def SUBSTITUTIONS-MAPPING
   {:daisyui {:fetch-assets-urls "bb_edn_daisyui.edn"}
@@ -23,7 +22,9 @@
               :deploy-secrets-kamal "kamal-deploy-secrets-postgres.txt"
               :db-driver-deps "deps_edn_db_driver_deps_postgres.edn"
               :db-test-deps "deps_edn_db_test_deps_postgres.edn"
-              :test-utils-db-setup "test_utils_db_setup_postgres.clj"}})
+              :test-utils-db-setup "test_utils_db_setup_postgres.clj"}
+   :kamal {:readme-deploy-kamal "readme_deploy_kamal.md"
+           :bb-deploy-kamal "bb_deploy_kamal.edn"}})
 
 (defn- get-file-content
   [file-name]
@@ -43,23 +44,32 @@
   Result is merged onto existing options data.
   Returning nil means no changes to options data."
   [data]
-  (let [db (keyword (:db data :sqlite))]
+  (let [db (keyword (:db data :sqlite))
+        deploy (keyword (:deploy data :kamal))]
 
     (when-not (contains? DB-TYPES db)
       (throw (Exception. "Invalid db type. Supported types are: :sqlite, :postgres")))
 
+    (when-not (contains? DEPLOY-TYPES deploy)
+      (throw (Exception. "Invalid deploy type. Supported types are: :kamal, :none")))
+
     (cond-> {:db db
+             :deploy deploy
              :fetch-assets-urls ""
              :clj-repl-cmd ""
              :db-config ""
              :sql-result-set-config ""
              :ci-deploy-env-vars ""
+             :test-utils-db-setup ""
              :deploy-config-kamal ""
              :deploy-secrets-kamal ""
              :db-driver-deps ""
-             :db-test-deps ""}
+             :db-test-deps ""
+             :readme-deploy-kamal ""
+             :bb-deploy-kamal ""}
       (:daisyui data) (merge (replace-vars (:daisyui SUBSTITUTIONS-MAPPING)))
-      db (merge (replace-vars (get SUBSTITUTIONS-MAPPING db))))))
+      db (merge (replace-vars (get SUBSTITUTIONS-MAPPING db)))
+      deploy (merge (replace-vars (get SUBSTITUTIONS-MAPPING deploy))))))
 
 (defn post-process-fn
   "Example post-process-fn handler.
@@ -77,7 +87,9 @@
    :sqlite [["db_sqlite" "db"]
             ["resources_migrations_sqlite" "resources/migrations"]]
    :postgres [["resources_migrations_postgres" "resources/migrations"]
-              ["docker-compose-postgres" ""]]})
+              ["docker-compose-postgres" ""]]
+   :kamal [["github_workflows_deploy_yaml_kamal" ".github/workflows"]
+           ["kamal" ".kamal"]]})
 
 (defn- apply-transform-source-dir
   [suffix transform]
@@ -105,9 +117,11 @@
     (prn edn))
 
   (let [db (:db data (:db edn))
+        deploy (:deploy data (:deploy edn))
         new-transform (cond->> (:transform edn)
                         (:daisyui data) (apply-transform-source-dir :daisyui)
-                        db (apply-transform-source-dir db))
+                        db (apply-transform-source-dir db)
+                        deploy (apply-transform-source-dir deploy))
         result (assoc edn :transform new-transform)]
     (when (true? (:debug data))
       (println "template-fn returning edn:")

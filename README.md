@@ -1,7 +1,7 @@
 # Clojure Stack Lite
 
 A quick way to start a full-stack Clojure app with server-side rendering. 
-Built on a powerful yet lightweight stack featuring SQLite, HTMX, AlpineJS, and TailwindCSS v4.
+Built on a powerful yet lightweight stack featuring SQLite/PostgreSQL, HTMX, AlpineJS, and TailwindCSS v4.
 
 This template is designed to be lightweight and easy to use, with a focus on rapid development and deployment. Minimal distraction and sane defaults. Everything is streamlined to give you a solid foundation for building modern web applications.
 
@@ -129,8 +129,12 @@ The template generates a Clojure project with the following structure:
 
 The template offers customization options for generating your project:
 
-- `:daisyui` - Include [DaisyUI](https://daisyui.com/), a component library for
-  TailwindCSS (*Default: `false`*)
+- `:db` - Choose between SQLite or PostgreSQL for your database (*Default: `:sqlite`*)
+    - Available values: `:sqlite` or `:postgres`
+- `:daisyui` - Include [DaisyUI](https://daisyui.com/), a component library for TailwindCSS (*Default: `false`*)
+    - Available values: `true`
+- `:deploy` - Choose between Kamal and no deployment configuration (*Default:* `:kamal`)
+    - Available values: `:kamal` or `:none`
 
 Possible values: `false | true`
 
@@ -144,11 +148,10 @@ clojure -Tnew create :template io.github.abogoyavlensky/clojure-stack-lite :name
 
 - [x] DaisyUI support
 - [x] PostgreSQL support
-- [ ] Fly.io as a deployment option
+- [x] No deployment option
 - [ ] Register/Auth flow
 - [ ] Sentry support
 - [ ] More frontend tool options (TwinSpark, Datastar)
-- [ ] Railway as a deployment option
 - [ ] Queue support
 - [ ] Websocket support
 
