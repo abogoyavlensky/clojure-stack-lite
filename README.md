@@ -116,6 +116,7 @@ The template generates a Clojure project with the following structure:
 ├── .cljfmt.edn            # Formatting configuration
 ├── .gitignore             # Git ignore rules
 ├── .mise.toml             # mise-en-place configuration with system dependencies
+├── .dockerignore          # Docker ignore rules
 ├── bb.edn                 # Babashka tasks configuration for managing application
 ├── deps.edn               # Clojure dependencies and aliases
 ├── Dockerfile             # Dockerfile for building the application image

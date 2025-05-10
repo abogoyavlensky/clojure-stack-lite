@@ -5,8 +5,12 @@
           (def output-css-file "resources/public/css/output.css"))
   :enter (println "Running task:" (:name (current-task)))
 
-  deps {:doc "Install all dev deps"
-        :task (clojure "-P -X:dev:test:outdated")}
+  deps {:doc "Install all deps"
+        :task (do
+                (clojure "-P -X:dev:test")
+                (clojure "-P -X:outdated")
+                (clojure "-P -X:build")
+                (clojure "-P"))}
 
   clj-repl {{clj-repl-cmd}}
 
