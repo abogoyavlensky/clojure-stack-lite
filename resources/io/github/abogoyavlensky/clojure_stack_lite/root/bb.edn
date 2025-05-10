@@ -7,7 +7,8 @@
 
   deps {:doc "Install all deps"
         :task (do
-                (clojure "-P -X:dev:test")
+                (clojure "-P -X:dev")
+                (clojure "-P -X:test")
                 (clojure "-P -X:outdated")
                 (clojure "-P -X:build")
                 (clojure "-P"))}
