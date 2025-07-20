@@ -1,0 +1,5 @@
+
+        ; auth
+        buddy/buddy-hashers {:mvn/version "2.0.167"}
+        buddy/buddy-auth {:mvn/version "3.0.323"}
+        buddy/buddy-sign {:mvn/version "3.6.1-359"}

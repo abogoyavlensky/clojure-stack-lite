@@ -23,6 +23,7 @@
               :db-driver-deps "deps_edn_db_driver_deps_postgres.edn"
               :db-test-deps "deps_edn_db_test_deps_postgres.edn"
               :test-utils-db-setup "test_utils_db_setup_postgres.clj"}
+   :auth {:auth-deps "deps_edn_auth_deps.edn"}
    :kamal {:readme-deploy-kamal "readme_deploy_kamal.md"
            :bb-deploy-kamal "bb_deploy_kamal.edn"}})
 
@@ -65,9 +66,11 @@
              :deploy-secrets-kamal ""
              :db-driver-deps ""
              :db-test-deps ""
+             :auth-deps ""
              :readme-deploy-kamal ""
              :bb-deploy-kamal ""}
       (:daisyui data) (merge (replace-vars (:daisyui SUBSTITUTIONS-MAPPING)))
+      (:auth data) (merge (replace-vars (:auth SUBSTITUTIONS-MAPPING)))
       db (merge (replace-vars (get SUBSTITUTIONS-MAPPING db)))
       deploy (merge (replace-vars (get SUBSTITUTIONS-MAPPING deploy))))))
 
@@ -88,6 +91,8 @@
             ["resources_migrations_sqlite" "resources/migrations"]]
    :postgres [["resources_migrations_postgres" "resources/migrations"]
               ["docker-compose-postgres" ""]]
+   :auth [["resources_migrations_sqlite_auth" "resources/migrations"]
+          ["src_auth" "src/{{main/file}}"]]
    :kamal [["github_workflows_deploy_yaml_kamal" ".github/workflows"]
            ["kamal" ".kamal"]]})
 
@@ -120,6 +125,7 @@
         deploy (:deploy data (:deploy edn))
         new-transform (cond->> (:transform edn)
                         (:daisyui data) (apply-transform-source-dir :daisyui)
+                        (:auth data) (apply-transform-source-dir :auth)
                         db (apply-transform-source-dir db)
                         deploy (apply-transform-source-dir deploy))
         result (assoc edn :transform new-transform)]
