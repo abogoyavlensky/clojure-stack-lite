@@ -1,8 +1,5 @@
 (ns {{main/ns}}.test-utils
-  (:require [clj-http.client :as http]
-            [clj-http.cookies :as cookies]
-            [hickory.core :as hickory]
-            [hickory.select :as select]
+  (:require [hickory.core :as hickory]
             [integrant-extras.tests :as ig-extras]
             [{{main/ns}}.db :as db]
             [{{main/ns}}.server :as server]))

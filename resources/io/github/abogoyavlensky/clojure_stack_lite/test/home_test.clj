@@ -1,7 +1,6 @@
 (ns {{main/ns}}.home-test
   (:require [clj-http.client :as http]
             [clojure.test :refer :all]
-            [hickory.core :as hickory]
             [hickory.select :as select]
             [integrant-extras.tests :as ig-extras]
             [reitit-extras.tests :as reitit-extras]
