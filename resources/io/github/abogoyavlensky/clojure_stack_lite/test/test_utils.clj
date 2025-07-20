@@ -4,25 +4,28 @@
             [hickory.core :as hickory]
             [hickory.select :as select]
             [integrant-extras.tests :as ig-extras]
-            [{{main/ns}}.db :as db]))
+            [{{main/ns}}.db :as db]
+            [{{main/ns}}.server :as server]))
 
-(def ^:const CSRF-TOKEN-KEY :__anti-forgery-token)
-(def ^:const CSRF-TOKEN-HEADER "x-csrf-token")
+(def ^:const TEST-CSRF-TOKEN "test-csrf-token")
+(def ^:const TEST-SECRET-KEY "test-secret-key")
 
 {{test-utils-db-setup}}
 
-(defn get-csrf-token-and-cookies
-  "Return CSRF token and cookies for given page to be used in POST request."
-  [page-with-form-url]
-  (let [cookie-store (cookies/cookie-store)
-        response (http/get page-with-form-url {:cookie-store cookie-store})
-        csrf-token (->> response
-                        :body
-                        (hickory/parse)
-                        (hickory/as-hickory)
-                        (select/select (select/id CSRF-TOKEN-KEY))
-                        (first)
-                        :attrs
-                        :value)]
-    {:csrf-token csrf-token
-     :cookies (cookies/get-cookies cookie-store)}))
+(defn response->hickory
+  "Convert a Ring response body to a Hickory document."
+  [response]
+  (-> response
+      :body
+      (hickory/parse)
+      (hickory/as-hickory)))
+
+(defn db
+  "Get the database connection from the test system."
+  []
+  (::db/db ig-extras/*test-system*))
+
+(defn server
+  "Get the server instance from the test system."
+  []
+  (::server/server ig-extras/*test-system*))

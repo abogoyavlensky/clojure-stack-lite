@@ -9,7 +9,7 @@
         metosin/reitit-ring {:mvn/version "0.9.1"}
         metosin/reitit-middleware {:mvn/version "0.9.1"}
         metosin/reitit-malli {:mvn/version "0.9.1"}
-        io.github.abogoyavlensky/reitit-extras {:mvn/version "0.2.0"}
+        io.github.abogoyavlensky/reitit-extras {:mvn/version "0.2.1"}
         ring/ring-jetty-adapter {:mvn/version "1.14.2"}
         io.github.abogoyavlensky/manifest-edn {:mvn/version "0.1.1"}
         ; db

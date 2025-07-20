@@ -15,12 +15,8 @@
   test-utils/with-truncated-tables)
 
 (deftest test-home-page-is-loaded-correctly
-  (let [server (::server/server ig-extras/*test-system*)
-        url (reitit-extras/get-server-url server :host)
-        body (-> (http/get url)
-                 :body
-                 (hickory/parse)
-                 (hickory/as-hickory))]
+  (let [url (reitit-extras/get-server-url (test-utils/server) :host)
+        body (test-utils/response->hickory (http/get url))]
     (is (= "Clojure Stack Lite"
            (->> body
                 (select/select (select/tag :span))
