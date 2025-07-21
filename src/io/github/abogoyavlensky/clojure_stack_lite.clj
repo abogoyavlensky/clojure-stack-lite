@@ -92,7 +92,8 @@
    :postgres [["resources_migrations_postgres" "resources/migrations"]
               ["docker-compose-postgres" ""]]
    :auth [["resources_migrations_sqlite_auth" "resources/migrations"]
-          ["src_auth" "src/{{main/file}}"]]
+          ["src_auth" "src/{{main/file}}"]
+          ["test_auth" "test/{{main/file}}"]]
    :kamal [["github_workflows_deploy_yaml_kamal" ".github/workflows"]
            ["kamal" ".kamal"]]})
 
