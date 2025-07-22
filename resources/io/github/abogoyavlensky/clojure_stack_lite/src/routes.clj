@@ -3,7 +3,7 @@
             [{{main/ns}}.handlers :as handlers]))
 
 (def routes
-  [["/" {:name ::home-page
+  [["/" {:name ::home
          :get {:handler handlers/home-handler}
          :responses {200 {:body string?}}}]
    ["/health" {:name ::health-check

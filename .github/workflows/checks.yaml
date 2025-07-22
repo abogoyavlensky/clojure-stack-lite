@@ -39,6 +39,26 @@ jobs:
           bb fetch-assets
           bb css-build
 
+      - name: Generate project - auth sqlite
+        run: |
+          rm -rf tmpl-prj
+          bb new :auth true
+          cd tmpl-prj
+          mise trust && mise install
+          bb lint-init && bb lint
+          bb outdated-check
+          bb test
+
+      - name: Generate project - auth postgres
+        run: |
+          rm -rf tmpl-prj
+          bb new :auth true :db :postgres
+          cd tmpl-prj
+          mise trust && mise install
+          bb lint-init && bb lint
+          bb outdated-check
+          bb test
+
       - name: Generate project - postgres
         run: |
           bb new :db :postgres
