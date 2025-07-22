@@ -1,6 +1,7 @@
 (ns {{main/ns}}.auth.handlers
   (:require [buddy.hashers :as hashers]
             [buddy.sign.jwt :as jwt]
+            [clojure.string :as str]
             [{{main/ns}}.auth.queries :as queries]
             [{{main/ns}}.auth.views :as views]
             [{{main/ns}}.routes :as-alias routes]
@@ -13,16 +14,11 @@
 (def ^:const JWT-ALGORITHM :hs256)
 
 ; Common response utilities
-(defn redirect-response
-  "Create an HTMX redirect response"
-  [router route-name]
-  (-> (ext/render-html [:div])
-      (response/header "HX-Redirect" (ext/get-route router route-name))))
-
 (defn redirect-with-session
   "Create an HTMX redirect response with session data"
   [router route-name session-data]
-  (-> (redirect-response router route-name)
+  (-> (ext/render-html [:div])
+      (response/header "HX-Redirect" (ext/get-route router route-name))
       (assoc :session session-data)))
 
 (defn build-reset-url
@@ -70,6 +66,10 @@
       (views/register-page)
       (ext/render-html)))
 
+(defn- auth-session
+  [user]
+  {:identity (select-keys user [:id :email])})
+
 (defn post-register
   "Process user registration form submission"
   [{:keys [context errors parameters params]
@@ -86,9 +86,9 @@
       (try
         (let [user (queries/create-user! (:db context) {:email email
                                                         :password password})]
-          (redirect-with-session router ::routes/home {:identity (dissoc user :password)}))
+          (redirect-with-session router ::routes/home (auth-session user)))
         (catch SQLException e
-          (let [error-msg (if (re-find #"UNIQUE constraint failed" (ex-message e))
+          (let [error-msg (if (re-find #"unique constraint" (str/lower-case (ex-message e)))
                             "user already exists"
                             "unexpected database error while creating account")]
             (-> (assoc base-data :errors {:email [error-msg]})
@@ -120,7 +120,7 @@
           user (queries/get-user (:db context) email)
           {:keys [valid]} (verify-password password (:password user))]
       (if (and (some? user) valid)
-        (redirect-with-session router ::routes/home {:identity (dissoc user :password)})
+        (redirect-with-session router ::routes/home (auth-session user))
         (-> {:router router
              :values params
              :errors {:common ["Invalid email or password"]}}

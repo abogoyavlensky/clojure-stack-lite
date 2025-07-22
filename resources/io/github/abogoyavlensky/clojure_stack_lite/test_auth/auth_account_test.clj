@@ -18,8 +18,9 @@
         user (queries/create-user! (utils/db) {:email "user@example.com"
                                                :password "secure-password"})
         url (str base-url "/account")
-        response (http/get url {:cookies (reitit-extras/session-cookies {:identity user}
-                                                                        utils/TEST-SECRET-KEY)})
+        response (http/get url {:cookies (reitit-extras/session-cookies
+                                           {:identity (select-keys user [:id :email])}
+                                           utils/TEST-SECRET-KEY)})
         body (utils/response->hickory response)]
 
     (testing "Account heading"
@@ -52,7 +53,7 @@
         change-response (http/post (str base-url "/account/change-password")
                                    {:cookies (reitit-extras/session-cookies
                                                {reitit-extras/CSRF-TOKEN-SESSION-KEY utils/TEST-CSRF-TOKEN
-                                                :identity user}
+                                                :identity (select-keys user [:id :email])}
                                                utils/TEST-SECRET-KEY)
                                     :form-params {reitit-extras/CSRF-TOKEN-FORM-KEY utils/TEST-CSRF-TOKEN
                                                   :current-password original-password
@@ -68,8 +69,9 @@
         user (queries/create-user! (utils/db) {:email "user@example.com"
                                                :password "secure-password"})
         account-url (str base-url "/account")
-        response (http/get account-url {:cookies (reitit-extras/session-cookies {:identity user}
-                                                                                utils/TEST-SECRET-KEY)})
+        response (http/get account-url {:cookies (reitit-extras/session-cookies
+                                                   {:identity (select-keys user [:id :email])}
+                                                   utils/TEST-SECRET-KEY)})
         body (utils/response->hickory response)]
 
     (testing "Verify change password form exists"
@@ -101,7 +103,7 @@
         response (http/post url
                             {:cookies (reitit-extras/session-cookies
                                         {reitit-extras/CSRF-TOKEN-SESSION-KEY utils/TEST-CSRF-TOKEN
-                                         :identity user}
+                                         :identity (select-keys user [:id :email])}
                                         utils/TEST-SECRET-KEY)
                              :form-params {reitit-extras/CSRF-TOKEN-FORM-KEY utils/TEST-CSRF-TOKEN
                                            :current-password "wrong-password"
@@ -124,7 +126,7 @@
         response (http/post change-password-url
                             {:cookies (reitit-extras/session-cookies
                                         {reitit-extras/CSRF-TOKEN-SESSION-KEY utils/TEST-CSRF-TOKEN
-                                         :identity user}
+                                         :identity (select-keys user [:id :email])}
                                         utils/TEST-SECRET-KEY)
                              :form-params {reitit-extras/CSRF-TOKEN-FORM-KEY utils/TEST-CSRF-TOKEN
                                            :current-password current-password
@@ -146,7 +148,7 @@
         response (http/post change-password-url
                             {:cookies (reitit-extras/session-cookies
                                         {reitit-extras/CSRF-TOKEN-SESSION-KEY utils/TEST-CSRF-TOKEN
-                                         :identity user}
+                                         :identity (select-keys user [:id :email])}
                                         utils/TEST-SECRET-KEY)
                              :form-params {reitit-extras/CSRF-TOKEN-FORM-KEY utils/TEST-CSRF-TOKEN
                                            :current-password current-password
@@ -167,7 +169,7 @@
         response (http/post change-password-url
                             {:cookies (reitit-extras/session-cookies
                                         {reitit-extras/CSRF-TOKEN-SESSION-KEY utils/TEST-CSRF-TOKEN
-                                         :identity user}
+                                         :identity (select-keys user [:id :email])}
                                         utils/TEST-SECRET-KEY)
                              :form-params {reitit-extras/CSRF-TOKEN-FORM-KEY utils/TEST-CSRF-TOKEN
                                            :current-password current-password
@@ -188,7 +190,7 @@
         response (http/post change-password-url
                             {:cookies (reitit-extras/session-cookies
                                         {reitit-extras/CSRF-TOKEN-SESSION-KEY utils/TEST-CSRF-TOKEN
-                                         :identity user}
+                                         :identity (select-keys user [:id :email])}
                                         utils/TEST-SECRET-KEY)
                              :form-params {reitit-extras/CSRF-TOKEN-FORM-KEY utils/TEST-CSRF-TOKEN
                                            :current-password current-password

@@ -91,9 +91,10 @@
             ["resources_migrations_sqlite" "resources/migrations"]]
    :postgres [["resources_migrations_postgres" "resources/migrations"]
               ["docker-compose-postgres" ""]]
-   :auth [["resources_migrations_sqlite_auth" "resources/migrations"]
-          ["src_auth" "src/{{main/file}}"]
+   :auth [["src_auth" "src/{{main/file}}"]
           ["test_auth" "test/{{main/file}}"]]
+   :auth-sqlite [["resources_migrations_sqlite_auth" "resources/migrations"]]
+   :auth-postgres [["resources_migrations_postgres_auth" "resources/migrations"]]
    :kamal [["github_workflows_deploy_yaml_kamal" ".github/workflows"]
            ["kamal" ".kamal"]]})
 
@@ -127,6 +128,8 @@
         new-transform (cond->> (:transform edn)
                         (:daisyui data) (apply-transform-source-dir :daisyui)
                         (:auth data) (apply-transform-source-dir :auth)
+                        (and (:auth data) (= :sqlite db)) (apply-transform-source-dir :auth-sqlite)
+                        (and (:auth data) (= :postgres db)) (apply-transform-source-dir :auth-postgres)
                         db (apply-transform-source-dir db)
                         deploy (apply-transform-source-dir deploy))
         result (assoc edn :transform new-transform)]

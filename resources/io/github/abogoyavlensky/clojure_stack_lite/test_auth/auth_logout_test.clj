@@ -19,7 +19,7 @@
                                                :password "password123"})
         response (http/post logout-url {:cookies (reitit-extras/session-cookies
                                                    {reitit-extras/CSRF-TOKEN-SESSION-KEY utils/TEST-CSRF-TOKEN
-                                                    :identity user}
+                                                    :identity (select-keys user [:id :email])}
                                                    utils/TEST-SECRET-KEY)
                                         :form-params {reitit-extras/CSRF-TOKEN-FORM-KEY utils/TEST-CSRF-TOKEN}})
         session-cookie-value (get-in response [:cookies "ring-session" :value])]

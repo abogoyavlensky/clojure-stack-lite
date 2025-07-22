@@ -47,8 +47,9 @@
         user (queries/create-user! (utils/db) {:email "user@example.com"
                                                :password "password123"})
         response (http/get url {:redirect-strategy :none
-                                :cookies (reitit-extras/session-cookies {:identity user}
-                                                                        utils/TEST-SECRET-KEY)})]
+                                :cookies (reitit-extras/session-cookies
+                                           {:identity (select-keys user [:id :email])}
+                                           utils/TEST-SECRET-KEY)})]
 
     (testing "Should get a redirect to home page"
       (is (= 302 (:status response)))

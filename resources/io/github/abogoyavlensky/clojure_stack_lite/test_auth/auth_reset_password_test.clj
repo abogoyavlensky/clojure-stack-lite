@@ -113,8 +113,9 @@
         token (create-test-token test-email (:id user))
         url (str base-url "/auth/reset-password?token=" token)
         response (http/get url {:redirect-strategy :none
-                                :cookies (reitit-extras/session-cookies {:identity user}
-                                                                        utils/TEST-SECRET-KEY)})]
+                                :cookies (reitit-extras/session-cookies
+                                           {:identity (select-keys user [:id :email])}
+                                           utils/TEST-SECRET-KEY)})]
     (is (= 302 (:status response)))
     (is (= "/" (get-in response [:headers "Location"])))))
 

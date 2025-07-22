@@ -26,7 +26,8 @@
   "Run all tests for the project."
   []
   (repl/refresh)
-  (eftest/run-tests (eftest/find-tests "test") {:report eftest-report/report}))
+  (eftest/run-tests (eftest/find-tests "test") {:report eftest-report/report
+                                                :multithread? false}))
 
 (comment
   ; It's convenient to bind shortcuts to these functions in your editor.
@@ -38,6 +39,8 @@
   (stop)
   ; Run all project tests
   (run-all-tests)
+  ; Refresh namespaces
+  (repl/refresh)
 
   ; Example of add-lib dynamically
   ; Sync all new libs at once

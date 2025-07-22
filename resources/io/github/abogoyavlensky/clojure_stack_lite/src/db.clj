@@ -19,13 +19,13 @@
 (defn exec!
   "Send query to db and return vector of result items."
   [db query]
-  (let [query-sql (honey/format query)]
+  (let [query-sql (honey/format query {:quoted true})]
     (jdbc/execute! db query-sql sql-params)))
 
 (defn exec-one!
   "Send query to db and return single result item."
   [db query]
-  (let [query-sql (honey/format query)]
+  (let [query-sql (honey/format query {:quoted true})]
     (jdbc/execute-one! db query-sql sql-params)))
 
 ; Component
