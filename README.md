@@ -50,6 +50,7 @@ Get started building your new Clojure application in seconds and be productive!
 - 🔍 Linting, formatting and deps version management
 - ⚙️ deps.edn and Babashka Tasks for efficient project management
 - 📱 Basic PWA support out of the box (without service worker)
+- 🔒 Optional authentication and registration flow
 
 ## Stack
 
@@ -71,7 +72,7 @@ Get started building your new Clojure application in seconds and be productive!
 - **HTMX 2**: HTML extensions for AJAX without writing JavaScript
 - **AlpineJS 3**: Lightweight JavaScript framework for adding behavior
 - **TailwindCSS 4**: Utility-first CSS framework
-- [OPTIONAL] **DaisyUI**: A UI Component library (Add `:daisyui true` while generating template)
+- [OPTIONAL] **DaisyUI**: A UI Component library (`:daisyui true` option)
 
 ### Development
 - **Babashka**: Project management with tasks
@@ -83,6 +84,10 @@ Get started building your new Clojure application in seconds and be productive!
 - **Docker**: Containerization
 - **Kamal**: Zero-downtime deployments
 - **GitHub Actions**: CI/CD workflows
+
+### Features
+- Authentication and registration flow (`:auth true` option)
+  - Login, logout, registration, password reset, password change, account page 
 
 ## Project structure
 
@@ -135,6 +140,8 @@ The template offers customization options for generating your project:
     - Available values: `true`
 - `:deploy` - Choose between Kamal and no deployment configuration (*Default:* `:kamal`)
     - Available values: `:kamal` or `:none`
+- `:auth` - Add authentication and registration flow (*Default: `false`*)
+    - Available values: `true`
 
 Possible values: `false | true`
 
@@ -149,7 +156,7 @@ clojure -Tnew create :template io.github.abogoyavlensky/clojure-stack-lite :name
 - [x] DaisyUI support
 - [x] PostgreSQL support
 - [x] No deployment option
-- [ ] Register/Auth flow
+- [x] Register/Auth flow
 - [ ] Sentry support
 - [ ] More frontend tool options (TwinSpark, Datastar)
 - [ ] Queue support
