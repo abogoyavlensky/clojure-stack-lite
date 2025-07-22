@@ -12,9 +12,11 @@ Get started building your new Clojure application in seconds and be productive!
 1. Create a new Clojure project using Clojure CLI:
    ```bash
    clojure -Ttools install-latest :lib io.github.seancorfield/deps-new :as new
-   clojure -Sdeps '{:override-deps {org.clojure/clojure {:mvn/version "1.12.0"}}}' -Tnew create :template io.github.abogoyavlensky/clojure-stack-lite :name myproject
+   clojure -Tnew create :template io.github.abogoyavlensky/clojure-stack-lite :name myproject
    ```
-
+    
+    > Requires Clojure CLI tools version `1.12.0.1479` or later.
+    
    Or alternatively using [neil](https://github.com/babashka/neil):
 
    ```bash
