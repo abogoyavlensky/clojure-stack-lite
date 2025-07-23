@@ -153,6 +153,10 @@ Usage example:
 clojure -Tnew create :template io.github.abogoyavlensky/clojure-stack-lite :name myproject :daisyui true
 ```
 
+## Authentication flow preview
+
+https://github.com/user-attachments/assets/187daef7-d39d-4794-8dd4-2a88b735c826
+
 ## Roadmap
 
 - [x] DaisyUI support
