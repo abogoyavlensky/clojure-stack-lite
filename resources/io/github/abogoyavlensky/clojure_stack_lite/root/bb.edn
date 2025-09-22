@@ -1,4 +1,5 @@
-{:deps {io.github.abogoyavlensky/manifest-edn {:mvn/version "0.1.1"}}
+{:deps {io.github.abogoyavlensky/manifest-edn {:mvn/version "0.1.1"}
+        babashka/fs {:mvn/version "0.5.27"}}
  :tasks
  {:init (do
           (def input-css-file "resources/public/css/input.css")
@@ -41,8 +42,12 @@
          :depends [fmt lint outdated test]}
 
   css-watch {:doc "Rebuild css on file change in watch mode"
-             ; Use "exec" to be able to run in the repl
-             :task (shell "mise" "exec" "--" "tailwindcss" "-i" input-css-file "-o" output-css-file "--watch")}
+             ; Use "mise exec" to be able to run local version in repl
+             :requires ([babashka.fs :as fs])
+             :task (let [tailwind (if (fs/which "mise")
+                                    ["mise" "exec" "--" "tailwindcss"]
+                                    ["tailwindcss"])]
+                     (apply shell (concat tailwind ["-i" input-css-file "-o" output-css-file "--watch"])))}
 
   css-build {:doc "Build minified css"
              :task (shell "tailwindcss" "-i" input-css-file "-o" output-css-file "--minify")}
