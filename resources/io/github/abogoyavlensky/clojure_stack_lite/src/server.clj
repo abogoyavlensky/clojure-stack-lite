@@ -37,6 +37,7 @@
                [:map
                 [:port pos-int?]
                 [:session-secret-key string?]
+                [:cookie-attrs-secure? boolean?]
                 [:auto-reload? boolean?]
                 [:cache-assets? {:optional true} boolean?]
                 [:cache-control {:optional true} string?]]]
@@ -66,7 +67,7 @@
                              [default-charset/wrap-default-charset "utf-8"]
                              ring-cookies/wrap-cookies
                              [ring-session/wrap-session
-                              {:cookie-attrs {:secure true
+                              {:cookie-attrs {:secure (:cookie-attrs-secure? options)
                                               :http-only true}
                                :flash true
                                :store session-store}]
