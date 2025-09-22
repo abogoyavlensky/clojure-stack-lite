@@ -9,11 +9,11 @@ jobs:
   lint-fmt:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: ./.github/actions/cache-clojure-deps
         with:
           key-label: 'lint'
-      - uses: jdx/mise-action@v2
+      - uses: jdx/mise-action@v3.2.0
         with:
           install_args: "babashka cljfmt clj-kondo java clojure"
       - name: Lint and format
@@ -22,11 +22,11 @@ jobs:
   outdated:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: ./.github/actions/cache-clojure-deps
         with:
           key-label: 'outdated'
-      - uses: jdx/mise-action@v2
+      - uses: jdx/mise-action@v3.2.0
         with:
           install_args: "babashka java clojure"
       - name: Outdated deps
@@ -35,11 +35,11 @@ jobs:
   tests:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: ./.github/actions/cache-clojure-deps
         with:
           key-label: 'tests'
-      - uses: jdx/mise-action@v2
+      - uses: jdx/mise-action@v3.2.0
         with:
           install_args: "babashka java clojure"
       - name: Run tests
