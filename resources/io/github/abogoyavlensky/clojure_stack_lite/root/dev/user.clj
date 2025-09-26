@@ -1,5 +1,5 @@
 (ns user
-  (:require [clojure.tools.namespace.repl :as repl]
+  (:require [clj-reload.core :as reload]
             [clojure.repl.deps :as repl-deps]
             [malli.dev :as malli-dev]
             [eftest.runner :as eftest]
@@ -8,7 +8,7 @@
             [integrant.repl.state :as state]
             [integrant-extras.core :as ig-extras]))
 
-(repl/set-refresh-dirs "dev" "src" "test")
+(ig-repl/set-reload-options! {:dirs ["dev" "src" "test"], :file-pattern #"\.clj"})
 (malli-dev/start!)
 
 (defn reset
@@ -25,7 +25,7 @@
 (defn run-all-tests
   "Run all tests for the project."
   []
-  (repl/refresh)
+  (reload/reload)
   (eftest/run-tests (eftest/find-tests "test") {:report eftest-report/report
                                                 :multithread? false}))
 
@@ -40,7 +40,7 @@
   ; Run all project tests
   (run-all-tests)
   ; Refresh namespaces
-  (repl/refresh)
+  (reload/reload)
 
   ; Example of add-lib dynamically
   ; Sync all new libs at once
