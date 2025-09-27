@@ -1,4 +1,4 @@
-{:deps {org.clojure/clojure {:mvn/version "1.12.2"}
+{:deps {org.clojure/clojure {:mvn/version "1.12.3"}
         io.github.seancorfield/deps-new {:git/tag "v0.8.0" :git/sha "2f96530"}}
 
  :paths ["src" "resources"]
