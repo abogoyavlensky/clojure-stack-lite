@@ -1,5 +1,6 @@
 (ns {{main/ns}}.db
-  (:require [clojure.tools.logging :as log]
+  (:require [clojure.data.json :as json]
+            [clojure.tools.logging :as log]
             [hikari-cp.core :as cp]
             [honey.sql :as honey]
             [integrant-extras.core :as ig-extras]
@@ -10,6 +11,27 @@
             [next.jdbc.result-set :as jdbc-rs]
             [ragtime.next-jdbc :as ragtime-jdbc]
             [ragtime.repl :as ragtime-repl]))
+
+;; PostgreSQL type handling for next.jdbc
+
+(defn- parse-pgobject [^org.postgresql.util.PGobject v]
+  (case (.getType v)
+    ("json" "jsonb") (some-> (.getValue v) (json/read-str :key-fn keyword))
+    (.getValue v)))
+
+(extend-protocol jdbc-rs/ReadableColumn
+  org.postgresql.util.PGobject
+  (read-column-by-label [v _] (parse-pgobject v))
+  (read-column-by-index [v _2 _3] (parse-pgobject v)))
+
+(extend-protocol jdbc-prepare/SettableParameter
+  clojure.lang.IPersistentMap
+  (set-parameter [m ^java.sql.PreparedStatement s ^long i]
+    (.setObject s i (json/write-str m) java.sql.Types/OTHER))
+
+  clojure.lang.IPersistentVector
+  (set-parameter [v ^java.sql.PreparedStatement s ^long i]
+    (.setObject s i (json/write-str v) java.sql.Types/OTHER)))
 
 ; Common functions
 

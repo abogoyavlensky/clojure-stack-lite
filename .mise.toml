@@ -1,8 +1,8 @@
 [tools]
 java = "temurin-21.0.2+13.0.LTS"
-clojure = "1.12.0.1479"
-babashka = "1.12.194"
-tailwindcss = "4.1.3"
+clojure = "1.12.3.1577"
+babashka = "1.12.209"
+tailwindcss = "4.1.17"
 
 [alias]
 tailwindcss = "asdf:https://github.com/virtualstaticvoid/asdf-tailwindcss"

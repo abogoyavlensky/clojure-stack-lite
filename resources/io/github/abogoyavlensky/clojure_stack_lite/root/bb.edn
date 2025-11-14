@@ -24,7 +24,7 @@
 
   lint-init {:doc "Linting project's classpath"
              :task (shell "clj-kondo" "--parallel" "--dependencies" "--copy-configs"
-                     "--lint" (with-out-str (clojure "-Spath")))}
+                          "--lint" (with-out-str (clojure "-Spath")))}
 
   lint {:doc "Linting project's code"
         :task (shell "clj-kondo" "--parallel" "--lint" "src" "test")}
@@ -55,14 +55,14 @@
   fetch-assets {:doc "Fetch static file assets from URLs"
                 :requires ([manifest-edn.core :as manifest])
                 :task (manifest/fetch-assets!
-                        [{:url "https://unpkg.com/htmx.org@2.0.4/dist/htmx.min.js"
-                          :filepath "js/htmx.min.js"}
-                         {:url "https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"
-                          :filepath "js/alpinejs.min.js"}{{fetch-assets-urls}}])}
+                       [{:url "https://cdn.jsdelivr.net/npm/htmx.org@2.0.8/dist/htmx.min.js"
+                         :filepath "js/htmx.min.js"}
+                        {:url "https://cdn.jsdelivr.net/npm/alpinejs@3.15.1/dist/cdn.min.js"
+                         :filepath "js/alpinejs.min.js"} {{fetch-assets-urls}}])}
 
   build {:doc "Build application uberjar"
          :requires ([manifest-edn.core :as manifest])
          :task (do
                  (run 'css-build)
                  (manifest/hash-assets!)
-                 (clojure "-T:build build"))}{{bb-deploy-kamal}}}}
+                 (clojure "-T:build build"))} {{bb-deploy-kamal}}}}

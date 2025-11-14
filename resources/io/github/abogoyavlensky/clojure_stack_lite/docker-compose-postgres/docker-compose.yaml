@@ -3,7 +3,7 @@ volumes:
 
 services:
   db-local:
-    image: postgres:17.4-alpine3.21
+    image: postgres:18.1-alpine3.22
     ports:
       - "5432:5432"
     environment:
