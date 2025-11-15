@@ -90,6 +90,8 @@
    :sqlite [["db_sqlite" "db"]
             ["resources_migrations_sqlite" "resources/migrations"]]
    :postgres [["resources_migrations_postgres" "resources/migrations"]
+              ["src_postgres" "src/{{main/file}}"]
+              ["test_postgres" "test"]
               ["docker-compose-postgres" ""]]
    :auth [["src_auth" "src/{{main/file}}"]
           ["test_auth" "test/{{main/file}}"]]

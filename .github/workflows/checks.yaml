@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - uses: ./.github/actions/cache-clojure-deps
-      - uses: jdx/mise-action@v3.2.0
+      - uses: jdx/mise-action@v3.4.1
         with:
           install_args: "babashka java clojure"
       - name: Run tests

@@ -20,7 +20,7 @@ jobs:
       - uses: webfactory/ssh-agent@v0.9.1
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-      - uses: jdx/mise-action@v3.2.0
+      - uses: jdx/mise-action@v3.4.1
         with:
           install_args: "babashka"
 

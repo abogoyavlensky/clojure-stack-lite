@@ -1,3 +1,4 @@
 
-                               org.testcontainers/testcontainers {:mvn/version "1.21.3"}
-                               org.testcontainers/postgresql {:mvn/version "1.21.3"}
+                               org.testcontainers/testcontainers {:mvn/version "2.0.2"}
+                               org.testcontainers/testcontainers-jdbc {:mvn/version "2.0.2"}
+                               org.testcontainers/testcontainers-postgresql {:mvn/version "2.0.2"}

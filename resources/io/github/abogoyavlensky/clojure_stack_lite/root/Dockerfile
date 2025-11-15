@@ -2,8 +2,8 @@ FROM clojure:temurin-21-tools-deps-1.12.1.1550-alpine AS build
 
 WORKDIR /app
 
-ARG BB_VERSION=1.12.206
-ARG TAILWIND_VERSION=v4.1.11
+ARG BB_VERSION=1.12.209
+ARG TAILWIND_VERSION=v4.1.17
 
 # Install tailwindcss
 RUN wget -qO /usr/local/bin/tailwindcss "https://github.com/tailwindlabs/tailwindcss/releases/download/${TAILWIND_VERSION}/tailwindcss-linux-x64-musl" \

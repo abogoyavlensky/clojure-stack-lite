@@ -3,7 +3,7 @@
 # Database
 accessories:
   db:
-    image: postgres:17.4-alpine3.21
+    image: postgres:18.1-alpine3.22
     host: <%= ENV['SERVER_IP'] %>
     env:
       secret:

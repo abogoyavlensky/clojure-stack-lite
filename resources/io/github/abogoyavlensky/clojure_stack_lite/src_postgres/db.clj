@@ -1,0 +1,76 @@
+(ns {{main/ns}}.db
+  (:require [clojure.data.json :as json]
+            [clojure.tools.logging :as log]
+            [hikari-cp.core :as cp]
+            [honey.sql :as honey]
+            [integrant-extras.core :as ig-extras]
+            [integrant.core :as ig]
+            [next.jdbc :as jdbc]
+            ; Import for converting timestamp fields
+            [next.jdbc.date-time]
+            [next.jdbc.prepare :as jdbc-prepare]
+            [next.jdbc.result-set :as jdbc-rs]
+            [ragtime.next-jdbc :as ragtime-jdbc]
+            [ragtime.repl :as ragtime-repl]))
+
+; PostgreSQL type handling for next.jdbc
+
+(defn- parse-pgobject [^org.postgresql.util.PGobject v]
+  (case (.getType v)
+    ("json" "jsonb") (some-> (.getValue v) (json/read-str :key-fn keyword))
+    (.getValue v)))
+
+(extend-protocol jdbc-rs/ReadableColumn
+  org.postgresql.util.PGobject
+  (read-column-by-label [v _] (parse-pgobject v))
+  (read-column-by-index [v _2 _3] (parse-pgobject v)))
+
+(extend-protocol jdbc-prepare/SettableParameter
+  clojure.lang.IPersistentMap
+  (set-parameter [m ^java.sql.PreparedStatement s ^long i]
+    (.setObject s i (json/write-str m) java.sql.Types/OTHER))
+
+  clojure.lang.IPersistentVector
+  (set-parameter [v ^java.sql.PreparedStatement s ^long i]
+    (.setObject s i (json/write-str v) java.sql.Types/OTHER)))
+
+; Common functions
+
+(def ^:private sql-params
+  {:builder-fn jdbc-rs/as-unqualified-kebab-maps{{sql-result-set-config}}})
+
+(defn exec!
+  "Send query to db and return vector of result items."
+  [db query]
+  (let [query-sql (honey/format query {:quoted true})]
+    (jdbc/execute! db query-sql sql-params)))
+
+(defn exec-one!
+  "Send query to db and return single result item."
+  [db query]
+  (let [query-sql (honey/format query {:quoted true})]
+    (jdbc/execute-one! db query-sql sql-params)))
+
+; Component
+
+(defmethod ig/assert-key ::db
+  [_ params]
+  (ig-extras/validate-schema!
+    {:component ::db
+     :data params
+     :schema [:map
+              [:jdbc-url string?]]}))
+
+(defmethod ig/init-key ::db
+  [_ options]
+  (log/info "[DB] Starting database connection pool...")
+  (let [datasource (cp/make-datasource options)]
+    (ragtime-repl/migrate
+      {:datastore (ragtime-jdbc/sql-database datasource)
+       :migrations (ragtime-jdbc/load-resources "migrations")})
+    datasource))
+
+(defmethod ig/halt-key! ::db
+  [_ datasource]
+  (log/info "[DB] Closing database connection pool...")
+  (cp/close-datasource datasource))

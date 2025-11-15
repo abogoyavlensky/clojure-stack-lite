@@ -1,5 +1,5 @@
 {:deps {org.clojure/clojure {:mvn/version "1.12.3"}
-        io.github.seancorfield/deps-new {:git/tag "v0.8.0" :git/sha "2f96530"}}
+        io.github.seancorfield/deps-new {:git/tag "v0.10.1" :git/sha "a90029c"}}
 
  :paths ["src" "resources"]
 
@@ -12,8 +12,8 @@
                               :runner :eftest
                               :runner-opts {:multithread? false}}}
 
-           :local-new {:extra-deps {io.github.seancorfield/deps-new {:git/tag "v0.8.0"
-                                                                     :git/sha "2f96530"}
+           :local-new {:extra-deps {io.github.seancorfield/deps-new {:git/tag "v0.10.1"
+                                                                     :git/sha "a90029c"}
                                     clojure-stack-lite/clojure-stack-lite {:local/root "."}}
                        :exec-fn org.corfield.new/create
                        :exec-args {:template io.github.abogoyavlensky/clojure-stack-lite}}

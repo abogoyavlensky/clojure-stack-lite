@@ -1,5 +1,5 @@
 
-                         {:url "https://github.com/saadeghi/daisyui/releases/download/v5.0.28/daisyui.js"
-                          :filepath "js/daisyui.js"}
-                         {:url "https://github.com/saadeghi/daisyui/releases/download/v5.0.28/daisyui-theme.js"
-                          :filepath "js/daisyui-theme.js"}
+                        {:url "https://github.com/saadeghi/daisyui/releases/download/v5.5.3/daisyui.js"
+                         :filepath "js/daisyui.js"}
+                        {:url "https://github.com/saadeghi/daisyui/releases/download/v5.5.3/daisyui-theme.js"
+                         :filepath "js/daisyui-theme.js"}
