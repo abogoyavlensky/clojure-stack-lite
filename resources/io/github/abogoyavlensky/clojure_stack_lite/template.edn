@@ -9,5 +9,4 @@
  :transform
  [["src" "src/{{main/file}}"]
   ["test" "test/{{main/file}}"]
-  ["test_setup" "test"]
   ["resources_public_css_default" "resources/public/css"]]}
