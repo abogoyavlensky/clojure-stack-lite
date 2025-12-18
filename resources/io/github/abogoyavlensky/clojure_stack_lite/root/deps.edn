@@ -28,6 +28,7 @@
            :test {:extra-paths ["test"]
                   :extra-deps {eftest/eftest {:mvn/version "0.6.0"}
                                cloverage/cloverage {:mvn/version "1.2.4"}
+                               io.github.tonsky/clj-reload {:mvn/version "1.0.0"}
                                clj-http/clj-http {:mvn/version "3.13.1"}
                                circleci/bond {:mvn/version "0.6.0"}
                                org.clj-commons/hickory {:mvn/version "0.7.7"}{{db-test-deps}}}
