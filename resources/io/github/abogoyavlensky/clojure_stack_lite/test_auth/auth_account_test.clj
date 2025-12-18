@@ -2,13 +2,12 @@
   (:require [clj-http.client :as http]
             [clojure.test :refer :all]
             [hickory.select :as select]
-            [integrant-extras.tests :as ig-extras]
             [{{main/ns}}.auth.queries :as queries]
             [{{main/ns}}.test-utils :as utils]
             [reitit-extras.tests :as reitit-extras]))
 
 (use-fixtures :once
-  (ig-extras/with-system))
+  (utils/with-system))
 
 (use-fixtures :each
   utils/with-truncated-tables)

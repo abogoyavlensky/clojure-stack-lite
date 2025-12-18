@@ -1,7 +1,7 @@
 (defn with-truncated-tables
   "Remove all data from all tables except migrations."
   [f]
-  (let [db (::db/db ig-extras/*test-system*)]
+  (let [db (::db/db *test-system*)]
     (doseq [table (->> {:select [:name]
                         :from [:sqlite_master]
                         :where [:= :type "table"]}

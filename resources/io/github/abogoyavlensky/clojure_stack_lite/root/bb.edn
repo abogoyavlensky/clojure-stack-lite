@@ -1,5 +1,5 @@
 {:deps {io.github.abogoyavlensky/manifest-edn {:mvn/version "0.1.1"}
-        babashka/fs {:mvn/version "0.5.27"}}
+        babashka/fs {:mvn/version "0.5.30"}}
  :tasks
  {:init (do
           (def input-css-file "resources/public/css/input.css")
