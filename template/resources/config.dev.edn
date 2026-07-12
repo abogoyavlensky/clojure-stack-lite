@@ -1,0 +1,2 @@
+#merge [#include "config.edn"
+        {:integrant-extras.process/process {:cmd ["bb" "css-watch"]}}]

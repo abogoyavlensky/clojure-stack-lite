@@ -24,6 +24,20 @@ Get started building your new Clojure application in seconds and be productive!
    neil new io.github.abogoyavlensky/clojure-stack-lite myproject
    ```
 
+   Or using [frame](https://github.com/abogoyavlensky/frame), which needs no Clojure CLI and prompts for each option:
+
+   ```bash
+   frame new https://github.com/abogoyavlensky/clojure-stack-lite myproject
+   ```
+
+   To skip the prompts, pass answers with `--defaults --var` (see [Options](#options) for the keys):
+
+   ```bash
+   frame new --defaults \
+     --var db=postgres,auth=true,daisyui=true,deploy=none,developer=yourname \
+     https://github.com/abogoyavlensky/clojure-stack-lite myproject
+   ```
+
 2. Start development (with [mise](https://mise.jdx.dev/getting-started.html)):
 
    ```shell

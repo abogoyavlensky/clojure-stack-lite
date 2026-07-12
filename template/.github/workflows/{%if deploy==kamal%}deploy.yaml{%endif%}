@@ -1,0 +1,57 @@
+{% raw %}name: Deploy
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  checks:
+    uses: ./.github/workflows/checks.yaml
+
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    timeout-minutes: 20
+    needs: [ checks ]
+    steps:
+      - uses: actions/checkout@v6.0.1
+      - uses: webfactory/ssh-agent@v0.9.1
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - uses: jdx/mise-action@v3.5.1
+        with:
+          install_args: "babashka"
+
+      - name: Setup Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Expose GitHub Runtime for cache
+        uses: crazy-max/ghaction-github-runtime@v3
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.3.0
+          bundler-cache: true
+
+      - name: Install kamal
+        run: gem install kamal -v 2.3.0
+
+      - name: Build and deploy
+        env:
+          SERVER_IP: ${{ secrets.SERVER_IP }}
+          REGISTRY_USERNAME: ${{ github.actor }}
+          REGISTRY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+          APP_DOMAIN: ${{ secrets.APP_DOMAIN }}
+          SESSION_SECRET_KEY: ${{ secrets.SESSION_SECRET_KEY }}{% endraw %}{% if db == postgres %}{% raw %}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}{% endraw %}{% endif %}{% raw %}
+        run: bb kamal deploy --version=${{ github.sha }}
+
+      - name: Kamal Release
+        if: ${{ cancelled() }}
+        run: bb kamal lock release
+{% endraw %}

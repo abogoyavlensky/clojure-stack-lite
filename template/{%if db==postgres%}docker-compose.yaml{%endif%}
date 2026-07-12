@@ -1,0 +1,14 @@
+volumes:
+  postgres_data_dev: {}
+
+services:
+  db-local:
+    image: postgres:17.4-alpine3.21
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=localdb
+      - POSTGRES_USER=test
+      - POSTGRES_PASSWORD=test
+    volumes:
+      - postgres_data_dev:/var/lib/postgresql/data

@@ -1,0 +1,27 @@
+{:description "A lightweight, modern template to jumpstart your Clojure project"
+ :vars [{:key :db
+         :prompt "Database"
+         :type :enum
+         :options ["sqlite" "postgres"]
+         :default "sqlite"}
+        {:key :auth
+         :prompt "Include authentication and registration flow?"
+         :type :boolean
+         :default false}
+        {:key :daisyui
+         :prompt "Include DaisyUI component library?"
+         :type :boolean
+         :default false}
+        {:key :deploy
+         :prompt "Deployment"
+         :type :enum
+         :options ["kamal" "none"]
+         :default "kamal"}
+        {:key :developer
+         :prompt "Developer / GitHub username (LICENSE + Docker image)"
+         :type :string
+         :validate {:pattern "^.+$" :msg "Developer cannot be empty"}}]
+ :raw ["resources/public/js/**"
+       "resources/public/images/**"
+       ".github/actions/**"
+       ".github/workflows/checks.yaml"]}

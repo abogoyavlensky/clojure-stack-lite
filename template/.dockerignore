@@ -1,0 +1,18 @@
+# See https://docs.docker.com/engine/reference/builder/#dockerignore-file for more about ignoring files.
+
+# Ignore git directory.
+/.git/
+/.gitignore
+
+# Ignore Clojure CLI cache-dir
+/.cpcache
+
+# Ignore manifest-edn cache-dir
+/resources-hashed
+
+# Ignore CI service files.
+/.github
+
+# Ignore Docker-related files
+/.dockerignore
+/Dockerfile*

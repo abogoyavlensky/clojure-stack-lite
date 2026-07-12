@@ -1,0 +1,79 @@
+{:deps {io.github.abogoyavlensky/manifest-edn {:mvn/version "0.1.1"}
+        babashka/fs {:mvn/version "0.5.30"}}
+ :tasks
+ {:init (do
+          (def input-css-file "resources/public/css/input.css")
+          (def output-css-file "resources/public/css/output.css"))
+  :enter (println "Running task:" (:name (current-task)))
+
+  deps {:doc "Install all deps"
+        :task (do
+                (clojure "-P -X:dev")
+                (clojure "-P -X:test")
+                (clojure "-P -X:outdated")
+                (clojure "-P -X:build")
+                (clojure "-P"))}
+
+  clj-repl {% case db %}{% when sqlite %}{:doc "Run built-in Clojure REPL"
+            :task (shell "clj -A:dev:test")}{% when postgres %}{:doc "Run docker compose and built-in Clojure REPL"
+            :task (do
+                    (shell "docker compose up -d")
+                    (shell "clj -A:dev:test"))}{% endcase %}
+
+  fmt-check {:doc "Check code formatting"
+             :task (shell "cljfmt" "check")}
+
+  fmt {:doc "Fix code formatting"
+       :task (shell "cljfmt" "fix")}
+
+  lint-init {:doc "Linting project's classpath"
+             :task (shell "clj-kondo" "--parallel" "--dependencies" "--copy-configs"
+                     "--lint" (with-out-str (clojure "-Spath")))}
+
+  lint {:doc "Linting project's code"
+        :task (shell "clj-kondo" "--parallel" "--lint" "src" "test")}
+
+  outdated-check {:doc "Check outdated Clojure deps versions"
+                  :task (clojure "-M:outdated")}
+
+  outdated {:doc "Upgrade outdated Clojure deps versions"
+            :task (clojure "-M:outdated --upgrade --force")}
+
+  test {:doc "Run tests"
+        :task (clojure "-X:test")}
+
+  check {:doc "Run all code checks and tests"
+         :depends [fmt lint outdated test]}
+
+  css-watch {:doc "Rebuild css on file change in watch mode"
+             ; Use "mise exec" to be able to run local version in repl
+             :requires ([babashka.fs :as fs])
+             :task (let [tailwind (if (fs/which "mise")
+                                    ["mise" "exec" "--" "tailwindcss"]
+                                    ["tailwindcss"])]
+                     (apply shell (concat tailwind ["-i" input-css-file "-o" output-css-file "--watch"])))}
+
+  css-build {:doc "Build minified css"
+             :task (shell "tailwindcss" "-i" input-css-file "-o" output-css-file "--minify")}
+
+  fetch-assets {:doc "Fetch static file assets from URLs"
+                :requires ([manifest-edn.core :as manifest])
+                :task (manifest/fetch-assets!
+                        [{:url "https://unpkg.com/htmx.org@2.0.4/dist/htmx.min.js"
+                          :filepath "js/htmx.min.js"}
+                         {:url "https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"
+                          :filepath "js/alpinejs.min.js"}{% if daisyui %}
+                         {:url "https://github.com/saadeghi/daisyui/releases/download/v5.0.28/daisyui.js"
+                          :filepath "js/daisyui.js"}
+                         {:url "https://github.com/saadeghi/daisyui/releases/download/v5.0.28/daisyui-theme.js"
+                          :filepath "js/daisyui-theme.js"}{% endif %}])}
+
+  build {:doc "Build application uberjar"
+         :requires ([manifest-edn.core :as manifest])
+         :task (do
+                 (run 'css-build)
+                 (manifest/hash-assets!)
+                 (clojure "-T:build build"))}{% if deploy == kamal %}
+
+  kamal {:doc "Deploy application using Kamal"
+         :task (apply shell "kamal" (concat *command-line-args* ["--config-file" ".kamal/deploy.yml"]))}{% endif %}}}

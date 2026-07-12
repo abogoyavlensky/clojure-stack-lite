@@ -1,0 +1,20 @@
+name: Cache Clojure deps
+
+inputs:
+  key-label:
+    description: 'Additional label for cache key'
+    default: 'deps'
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/checkout@v6.0.1
+    - name: Cache Clojure deps
+      uses: actions/cache@v4
+      with:
+        path: |
+          ~/.m2/repository
+          ~/.gitlibs
+          ~/.clojure
+          ~/.cpcache
+        key: ${{ runner.os }}-clojure-${{ inputs.key-label }}-${{ hashFiles('**/deps.edn') }}
